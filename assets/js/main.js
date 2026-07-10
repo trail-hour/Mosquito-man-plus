@@ -133,20 +133,10 @@ if (discountModal && !discountStorage.get()) {
 }
 
 // Contact/quote form and the 5% discount form: client-side validation +
-// confirmation. This is a static site with no backend. To go live,
-// replace the setTimeout() block below with a real submission, e.g.:
-//
-//   const response = await fetch(form.action, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
-//   });
-//
-// and point form.action at your endpoint (Formspree, a serverless
-// function, etc.). Keep the honeypot field and the disabled-button
+// Formspree submission. Keep the honeypot field and the disabled-button
 // pattern below either way.
 document.querySelectorAll("[data-quote-form], [data-discount-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const note = form.querySelector("[data-form-note]");
@@ -177,14 +167,17 @@ document.querySelectorAll("[data-quote-form], [data-discount-form]").forEach((fo
       note.classList.remove("is-error");
     }
 
-    window.setTimeout(() => {
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+
+      if (!response.ok) throw new Error(`Formspree responded with ${response.status}`);
+
       form.reset();
       form.classList.remove("was-validated");
-
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = submitButton.dataset.originalText || "Submit";
-      }
       if (note) {
         note.textContent =
           form.dataset.successMessage || "Thanks. Mosquito Man Plus received your request and will follow up soon.";
@@ -195,6 +188,16 @@ document.querySelectorAll("[data-quote-form], [data-discount-form]").forEach((fo
       if (form.matches("[data-discount-form]")) {
         discountStorage.set();
       }
-    }, 600);
+    } catch (error) {
+      if (note) {
+        note.textContent = "Something went wrong sending your request. Please call 905-924-2847 instead.";
+        note.classList.add("is-error");
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.originalText || "Submit";
+      }
+    }
   });
 });

@@ -102,17 +102,7 @@
         <strong>905-924-2847</strong>
       </a>
 
-      <!--
-        This is a static site with no backend yet. The form below is
-        validated and confirmed entirely client-side by
-        assets/js/main.js (see the [data-quote-form] handler).
-
-        To go live, point this form at a real endpoint, e.g.:
-          <form class="quote-form" action="https://formspree.io/f/your-id" method="post" ...>
-        and update the submit handler in main.js to actually send the
-        request instead of faking success with setTimeout().
-      -->
-      <form class="quote-form" action="#" method="post" data-quote-form data-success-message="Thanks. Mosquito Man Plus received your request and will follow up within one business day.">
+      <form class="quote-form" action="https://formspree.io/f/mgojgpyq" method="POST" data-quote-form data-success-message="Thanks. Mosquito Man Plus received your request and will follow up within one business day.">
         <input type="hidden" name="formType" value="quote">
         <input type="hidden" name="context" value="Contact page request">
         <label class="form-hp" aria-hidden="true">Website<input name="website" type="text" autocomplete="off" tabindex="-1"></label>
@@ -209,7 +199,7 @@
     <p class="section-kicker">New Customer Offer</p>
     <h2 id="discount-title">Save 5% on your first mosquito treatment.</h2>
     <p>Register with your email and phone number, then mention this offer when Mosquito Man Plus confirms your appointment.</p>
-    <form class="discount-form" action="#" method="post" data-discount-form data-success-message="Thanks. Mosquito Man Plus received your discount registration.">
+    <form class="discount-form" action="https://formspree.io/f/mgojgpyq" method="POST" data-discount-form data-success-message="Thanks. Mosquito Man Plus received your discount registration.">
       <input type="hidden" name="formType" value="discount">
       <input type="hidden" name="context" value="5% discount registration">
       <label class="form-hp" aria-hidden="true">Website<input name="website" type="text" autocomplete="off" tabindex="-1"></label>
