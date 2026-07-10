@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cygpath *)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -A \"Mozilla/5.0\" https://bugmanplus.vercel.app/assets/css/styles.css -o styles.css)",
+      "Bash(curl -s -A \"Mozilla/5.0\" https://bugmanplus.vercel.app/assets/js/main.js -o main.js)",
+      "Bash(curl -s -A \"Mozilla/5.0\" https://bugmanplus.vercel.app/about/ -o about.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" https://bugmanplus.vercel.app/services/ -o services.html)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
