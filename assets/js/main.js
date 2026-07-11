@@ -227,25 +227,38 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
       note.classList.remove("is-error");
     }
 
+    const email = form.querySelector("input[name='email']").value;
+    const phone = form.querySelector("input[name='phone']").value;
+
+    let response = null;
+    let data = {};
+
     try {
-      const email = form.querySelector("input[name='email']").value;
-      const phone = form.querySelector("input[name='phone']").value;
-      const response = await fetch("/api/subscribe", {
+      response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, phone }),
       });
-      const data = await response.json().catch(() => ({}));
+      data = await response.json();
+    } catch (error) {
+      response = null;
+    }
 
-      if (!response.ok || !data.success) throw new Error(`Subscribe responded with ${response.status}`);
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = submitButton.dataset.originalText || "Submit";
+    }
 
+    if (response && response.ok && data.success) {
       if (data.existing) {
         if (note) {
-          note.textContent = "You're already subscribed! Use code PEST5.";
+          note.textContent = "You're already subscribed! Use code PEST5 at checkout.";
           note.classList.remove("is-error");
         }
       } else {
         const successMessage = form.parentElement.querySelector("[data-discount-success]");
+        form.reset();
+        form.classList.remove("was-validated");
         form.hidden = true;
         if (successMessage) {
           successMessage.textContent = "🎉 Your 5% discount code is PEST5! Check your inbox.";
@@ -253,15 +266,10 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
         }
       }
       discountStorage.set();
-    } catch (error) {
+    } else {
       if (note) {
         note.textContent = "Something went wrong. Please try again.";
         note.classList.add("is-error");
-      }
-    } finally {
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = submitButton.dataset.originalText || "Submit";
       }
     }
   });
