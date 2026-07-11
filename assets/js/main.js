@@ -132,10 +132,8 @@ if (discountModal && !discountStorage.get()) {
   });
 }
 
-// Contact/quote form and the 5% discount form: client-side validation +
-// Formspree submission. Keep the honeypot field and the disabled-button
-// pattern below either way.
-document.querySelectorAll("[data-quote-form], [data-discount-form]").forEach((form) => {
+// Contact/quote form: client-side validation + Formspree submission.
+document.querySelectorAll("[data-quote-form]").forEach((form) => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -182,15 +180,73 @@ document.querySelectorAll("[data-quote-form], [data-discount-form]").forEach((fo
         note.textContent =
           form.dataset.successMessage || "Thanks. Mosquito Man Plus received your request and will follow up soon.";
       }
-
-      // A successful discount-form submission also counts as "don't show
-      // again" — the visitor already has the offer, no need to re-prompt.
-      if (form.matches("[data-discount-form]")) {
-        discountStorage.set();
-      }
     } catch (error) {
       if (note) {
         note.textContent = "Something went wrong sending your request. Please call 905-924-2847 instead.";
+        note.classList.add("is-error");
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.originalText || "Submit";
+      }
+    }
+  });
+});
+
+// 5% discount popup: client-side validation + /api/subscribe (Mailchimp).
+document.querySelectorAll("[data-discount-form]").forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const note = form.querySelector("[data-form-note]");
+    const submitButton = form.querySelector("button[type='submit']");
+    const honeypot = form.querySelector("input[name='website']");
+
+    // Silently drop likely-bot submissions.
+    if (honeypot && honeypot.value) return;
+
+    form.classList.add("was-validated");
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      if (note) {
+        note.textContent = "Please fill in the required fields above.";
+        note.classList.add("is-error");
+      }
+      return;
+    }
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.dataset.originalText = submitButton.textContent;
+      submitButton.textContent = "Sending…";
+    }
+    if (note) {
+      note.textContent = "Sending…";
+      note.classList.remove("is-error");
+    }
+
+    try {
+      const email = form.querySelector("input[name='email']").value;
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) throw new Error(`Subscribe responded with ${response.status}`);
+
+      form.reset();
+      form.classList.remove("was-validated");
+      if (note) {
+        note.textContent = "Your 5% discount code is PEST5! Check your email.";
+        note.classList.remove("is-error");
+      }
+      discountStorage.set();
+    } catch (error) {
+      if (note) {
+        note.textContent = "Something went wrong, please try again.";
         note.classList.add("is-error");
       }
     } finally {
