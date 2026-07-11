@@ -1176,6 +1176,13 @@ h1, h2, h3, p {
   color: var(--danger);
 }
 
+.discount-success {
+  margin: 4px 0 0;
+  color: var(--brand);
+  font-size: 14px;
+  font-weight: 800;
+}
+
 .discount-call {
   display: inline-flex;
   margin-top: 16px;

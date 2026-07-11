@@ -230,26 +230,16 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
     const email = form.querySelector("input[name='email']").value;
     const phone = form.querySelector("input[name='phone']").value;
 
-    let response = null;
-    let data = {};
-
     try {
-      response = await fetch("/api/subscribe", {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, phone }),
       });
-      data = await response.json();
-    } catch (error) {
-      response = null;
-    }
+      const data = await response.json();
 
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = submitButton.dataset.originalText || "Submit";
-    }
+      if (!response.ok || !data.success) throw new Error(`Subscribe responded with ${response.status}`);
 
-    if (response && response.ok && data.success) {
       if (data.existing) {
         if (note) {
           note.textContent = "You're already subscribed! Use code PEST5 at checkout.";
@@ -266,10 +256,18 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
         }
       }
       discountStorage.set();
-    } else {
+    } catch (error) {
       if (note) {
         note.textContent = "Something went wrong. Please try again.";
         note.classList.add("is-error");
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.originalText || "Submit";
+      }
+      if (note && note.textContent === "Sending…") {
+        note.textContent = "";
       }
     }
   });
