@@ -29,5 +29,5 @@ export default async function handler(req, res) {
   const data = await response.json();
   if (response.ok) return res.status(200).json({ success: true });
   if (data.title === 'Member Exists') return res.status(200).json({ success: true, existing: true });
-  return res.status(500).json({ error: data.detail || 'Subscription failed' });
+  return res.status(response.status).json({ error: data.detail || 'Subscription failed' });
 }
