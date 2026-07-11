@@ -229,10 +229,11 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
 
     try {
       const email = form.querySelector("input[name='email']").value;
+      const phone = form.querySelector("input[name='phone']").value;
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, phone }),
       });
       const data = await response.json().catch(() => ({}));
 
