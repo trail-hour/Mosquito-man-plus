@@ -133,16 +133,19 @@ button {
   min-width: 0;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
-  border: 1.5px solid rgba(var(--brand-rgb), 0.55);
+  padding: 6px 10px;
   border-radius: 9px;
-  background: rgba(var(--brand-rgb), 0.08);
-  color: var(--brand);
+  background: #fff;
+}
+
+.brand-logo img {
+  display: block;
+  height: 36px;
+  width: auto;
 }
 
 .brand-text {
