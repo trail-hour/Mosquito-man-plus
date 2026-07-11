@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   const response = await fetch(`https://${SERVER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`, {
     method: 'POST',
     headers: {
-      Authorization: `apikey ${API_KEY}`,
+      Authorization: `Basic ${Buffer.from(`anystring:${API_KEY}`).toString('base64')}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email_address: email, status: 'subscribed' }),
