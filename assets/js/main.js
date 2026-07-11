@@ -234,19 +234,27 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+      const data = await response.json().catch(() => ({}));
 
-      if (!response.ok) throw new Error(`Subscribe responded with ${response.status}`);
+      if (!response.ok || !data.success) throw new Error(`Subscribe responded with ${response.status}`);
 
-      form.reset();
-      form.classList.remove("was-validated");
-      if (note) {
-        note.textContent = "Your 5% discount code is PEST5! Check your email.";
-        note.classList.remove("is-error");
+      if (data.existing) {
+        if (note) {
+          note.textContent = "You're already subscribed! Use code PEST5.";
+          note.classList.remove("is-error");
+        }
+      } else {
+        const successMessage = form.parentElement.querySelector("[data-discount-success]");
+        form.hidden = true;
+        if (successMessage) {
+          successMessage.textContent = "🎉 Your 5% discount code is PEST5! Check your inbox.";
+          successMessage.hidden = false;
+        }
       }
       discountStorage.set();
     } catch (error) {
       if (note) {
-        note.textContent = "Something went wrong, please try again.";
+        note.textContent = "Something went wrong. Please try again.";
         note.classList.add("is-error");
       }
     } finally {
