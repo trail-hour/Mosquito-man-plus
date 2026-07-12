@@ -1027,6 +1027,56 @@ h1, h2, h3, p {
   background: rgba(var(--brand-rgb), 0.07);
 }
 
+.area-toggle {
+  display: inline-flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 48px;
+  margin-top: 16px;
+  padding: 0 22px;
+  border: 1px solid rgba(var(--brand-rgb), 0.75);
+  border-radius: 8px;
+  color: var(--on-brand);
+  background: var(--brand);
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 12px 36px rgba(var(--brand-rgb), 0.18);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.area-toggle:hover {
+  transform: translateY(-2px);
+  background: var(--brand-light);
+}
+
+.area-toggle[data-area-toggle-arrow-flip] [data-area-toggle-arrow] {
+  transform: rotate(180deg);
+}
+
+/* Closed by default: zero max-height keeps it out of layout flow while still
+   letting the expand/collapse transition animate smoothly (display:none
+   can't be transitioned). */
+.area-collapsible {
+  grid-column: 1 / -1;
+  overflow: hidden;
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  transition: max-height 500ms ease, opacity 400ms ease, margin-top 500ms ease;
+}
+
+.area-collapsible.is-expanded {
+  max-height: 2000px;
+  margin-top: 18px;
+  opacity: 1;
+}
+
+.area-collapsible .area-list {
+  margin-top: 0;
+}
+
 /* ============ contact ============ */
 .contact-split {
   display: grid;

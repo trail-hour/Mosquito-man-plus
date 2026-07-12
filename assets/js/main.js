@@ -18,6 +18,29 @@ if (menuButton && primaryNav) {
   });
 }
 
+// Areas page: "Show All Service Areas" expand/collapse. Vanilla JS + CSS
+// only — max-height is measured from scrollHeight rather than a blind large
+// constant so the slide animation is proportional to the real content height.
+const areaToggle = document.querySelector("[data-area-toggle]");
+const areaCollapsibles = document.querySelectorAll("[data-area-collapsible]");
+
+if (areaToggle && areaCollapsibles.length) {
+  const label = areaToggle.querySelector("[data-area-toggle-label]");
+
+  areaToggle.addEventListener("click", () => {
+    const expanding = areaToggle.getAttribute("aria-expanded") !== "true";
+    areaToggle.setAttribute("aria-expanded", String(expanding));
+    areaToggle.toggleAttribute("data-area-toggle-arrow-flip", expanding);
+    if (label) label.textContent = expanding ? "Show Less" : "Show All Service Areas";
+
+    areaCollapsibles.forEach((el) => {
+      el.setAttribute("aria-hidden", String(!expanding));
+      el.style.maxHeight = expanding ? `${el.scrollHeight}px` : "0px";
+      el.classList.toggle("is-expanded", expanding);
+    });
+  });
+}
+
 // FAQ accordion
 document.querySelectorAll("[data-accordion]").forEach((accordion) => {
   accordion.addEventListener("click", (event) => {
