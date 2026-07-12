@@ -42,6 +42,21 @@ const TOPICS = [
   "standing water mosquito breeding",
   "GTA mosquito season",
   "event spraying Durham",
+  "mosquito control Oshawa Ontario",
+  "mosquito exterminator Whitby Ontario",
+  "mosquito spray Ajax Ontario",
+  "mosquito control Pickering Ontario",
+  "mosquito treatment Clarington Ontario",
+  "mosquito control Bowmanville Ontario",
+  "tick control Durham Region Ontario",
+  "mosquito control Courtice Ontario",
+  "mosquito spray Brooklin Ontario",
+  "mosquito control Port Perry Ontario",
+  "backyard mosquito treatment GTA",
+  "mosquito control Scarborough Ontario",
+  "mosquito spray North York Ontario",
+  "mosquito control Mississauga Ontario",
+  "mosquito exterminator Vaughan Ontario",
 ];
 
 // Paired with topics to keep 30 posts/month from reading as near-duplicates
@@ -142,6 +157,7 @@ Requirements:
 - Title must include the primary keyword AND a location (e.g. Oshawa, Durham Region, or GTA), and must be under 60 characters.
 - Use H2 subheadings that include related keywords/phrases (not generic labels like "Introduction").
 - Naturally mention "Mosquito Man Plus" and at least two specific service areas (e.g. Oshawa, Whitby, Ajax, Pickering, Durham Region, GTA) throughout the body — not just once at the start.
+- If the topic above names a specific city or region (e.g. Oshawa, Whitby, Ajax, Pickering, Clarington, Bowmanville, Courtice, Brooklin, Port Perry, Scarborough, North York, Mississauga, Vaughan, Durham Region, GTA), mention that exact place name naturally 4-5 times spread across the article, not clustered in one paragraph — it should read as a resident would write it, not as keyword stuffing.
 - Include exactly ONE internal link with href="../services.html" (anchor text naturally referencing our mosquito control services) and exactly ONE internal link with href="../contact.html" (anchor text naturally inviting the reader to request a quote). Place both naturally inside body paragraphs. Do not include any other links.
 - Use semantic HTML only in bodyHtml: <p>, <h2>, <h3>, <ul>, <ol>, <li>, and the two <a href="..."> links described above. No <h1> (rendered separately). No inline styles, no <script>, no <img>, no markdown formatting.
 - Do NOT invent statistics, scientific studies, awards, certifications, or customer testimonials/reviews. Only mention these verified facts if relevant: Mosquito Man Plus is Oshawa-based, uses EPA/PMRA-registered products, and offers a return-visit guarantee on seasonal programs.
