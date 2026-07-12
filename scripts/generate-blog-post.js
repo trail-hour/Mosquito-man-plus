@@ -207,6 +207,44 @@ Respond with ONLY a single JSON object (no markdown code fences, no commentary) 
   return parsed;
 }
 
+// Looks up one photo for the post's topic via the Pexels API. Never throws —
+// a failed/missing lookup just means the post publishes without a featured
+// image rather than failing the whole daily run.
+async function fetchPexelsImage(topic) {
+  const apiKey = process.env.PEXELS_API_KEY;
+  if (!apiKey) {
+    console.warn("PEXELS_API_KEY not set — skipping featured image");
+    return null;
+  }
+
+  try {
+    const url = `https://api.pexels.com/v1/search?query=${encodeURIComponent(topic)}&per_page=1`;
+    const response = await fetch(url, { headers: { Authorization: apiKey } });
+
+    if (!response.ok) {
+      console.warn(`Pexels API error ${response.status}: ${await response.text()}`);
+      return null;
+    }
+
+    const data = await response.json();
+    const photo = data.photos?.[0];
+    if (!photo) {
+      console.warn(`No Pexels photo found for query "${topic}"`);
+      return null;
+    }
+
+    return { url: photo.src.large, photographer: photo.photographer };
+  } catch (error) {
+    console.warn(`Pexels fetch failed: ${error.message}`);
+    return null;
+  }
+}
+
+function buildFeaturedImageHtml(image, topic) {
+  if (!image) return "";
+  return `<figure class="blog-featured-image"><img src="${escapeHtml(image.url)}" alt="${escapeHtml(topic)}" loading="lazy"><figcaption>Photo by ${escapeHtml(image.photographer)} on Pexels</figcaption></figure>`;
+}
+
 function uniqueSlugAndFilename(baseSlug, dateIso) {
   let slug = baseSlug;
   let attempt = 1;
@@ -383,6 +421,10 @@ async function main() {
       }
     : await callClaude(topic, angle);
 
+  const image = DRY_RUN
+    ? { url: "https://images.pexels.com/photos/0000000/dry-run-placeholder.jpg", photographer: "Dry Run Photographer" }
+    : await fetchPexelsImage(topic);
+
   const title = truncate(raw.title, 60);
   const metaDescription = truncate(raw.metaDescription, 155);
 
@@ -407,6 +449,7 @@ async function main() {
     .replaceAll("{{ARTICLE_SCHEMA_JSON}}", buildArticleSchema({ title, metaDescription, dateIso, slug }))
     .replaceAll("{{FAQ_SCHEMA_SCRIPT}}", buildFaqSchemaScript(raw.faq))
     .replaceAll("{{TLDR_HTML}}", buildTldrHtml(raw.tldr))
+    .replaceAll("{{FEATURED_IMAGE_HTML}}", buildFeaturedImageHtml(image, topic))
     .replaceAll("{{KEY_TAKEAWAYS_HTML}}", buildKeyTakeawaysHtml(raw.keyTakeaways))
     .replaceAll("{{TOC_HTML}}", buildTocHtml(toc))
     .replaceAll("{{BODY_HTML}}", bodyHtml)
