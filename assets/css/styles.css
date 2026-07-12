@@ -508,9 +508,16 @@ h1, h2, h3, p {
 .approach-card span,
 .value-card span {
   display: block;
-  margin-bottom: 54px;
   color: var(--brand);
   font-weight: 900;
+}
+
+.approach-card span {
+  margin-bottom: 8px;
+}
+
+.value-card span {
+  margin-bottom: 54px;
 }
 
 .approach-card h3,
