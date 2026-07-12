@@ -176,14 +176,26 @@ Respond with ONLY a single JSON object (no markdown code fences, no commentary) 
     }),
   });
 
+  const rawBody = await response.text();
+  console.log(`Anthropic API response (status ${response.status}):`, rawBody);
+
   if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Anthropic API error ${response.status}: ${body}`);
+    throw new Error(`Anthropic API error ${response.status}: ${rawBody}`);
   }
 
-  const data = await response.json();
-  const text = data.content?.[0]?.text;
-  if (!text) throw new Error("Anthropic API response had no text content");
+  let data;
+  try {
+    data = JSON.parse(rawBody);
+  } catch (error) {
+    throw new Error(`Anthropic API returned non-JSON response:\n${rawBody}`);
+  }
+
+  // Normally the text is the first content block, but fall back to scanning
+  // for a "text" block in case Claude ever returns other block types first.
+  const textBlock =
+    (Array.isArray(data.content) && data.content.find((block) => block?.type === "text")) || data.content?.[0];
+  const text = textBlock?.text;
+  if (!text) throw new Error(`Anthropic API response had no text content:\n${JSON.stringify(data, null, 2)}`);
 
   const jsonMatch = text.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error(`Could not find JSON in Claude response:\n${text}`);
