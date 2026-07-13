@@ -1,0 +1,58 @@
+name: Post to Google Business Profile
+
+# workflow_run matches on the upstream workflow's `name:` field, not its
+# filename — daily-blog.yml declares `name: Daily Blog Post`, so that's what
+# is referenced below.
+on:
+  workflow_run:
+    workflows: ["Daily Blog Post"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  post-to-gbp:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Get GBP access token
+        id: token
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          RESPONSE=$(curl -s -X POST https://oauth2.googleapis.com/token \
+            -d client_id="$GBP_CLIENT_ID" \
+            -d client_secret="$GBP_CLIENT_SECRET" \
+            -d refresh_token="$GBP_REFRESH_TOKEN" \
+            -d grant_type=refresh_token)
+
+          ACCESS_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+
+          if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" == "null" ]; then
+            echo "::error::Failed to obtain GBP access token"
+            echo "$RESPONSE"
+            exit 1
+          fi
+
+          echo "::add-mask::$ACCESS_TOKEN"
+          echo "access_token=$ACCESS_TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Post latest blog post to Google Business Profile
+        env:
+          GBP_ACCESS_TOKEN: ${{ steps.token.outputs.access_token }}
+          GBP_ACCOUNT_ID: ${{ secrets.GBP_ACCOUNT_ID }}
+          GBP_LOCATION_ID: ${{ secrets.GBP_LOCATION_ID }}
+        run: node scripts/post-to-gbp.js
