@@ -22,11 +22,18 @@ const SITE_URL = "https://mosquitomanplus.com";
 // Fixed lastmod for the pages this job never touches. Update by hand if you
 // substantially edit one of these pages.
 const STATIC_PAGE_LASTMOD = "2026-07-11";
+const AREA_PAGE_LASTMOD = "2026-07-12";
+const AREA_SLUGS = [
+  "oshawa", "whitby", "ajax", "pickering", "clarington", "bowmanville",
+  "courtice", "newcastle", "brooklin", "port-perry", "scugog", "uxbridge",
+  "scarborough", "north-york", "mississauga", "vaughan",
+];
 const STATIC_PAGES = [
   { loc: `${SITE_URL}/`, lastmod: STATIC_PAGE_LASTMOD },
   { loc: `${SITE_URL}/about.html`, lastmod: STATIC_PAGE_LASTMOD },
   { loc: `${SITE_URL}/services.html`, lastmod: STATIC_PAGE_LASTMOD },
   { loc: `${SITE_URL}/areas.html`, lastmod: STATIC_PAGE_LASTMOD },
+  ...AREA_SLUGS.map((slug) => ({ loc: `${SITE_URL}/areas/${slug}.html`, lastmod: AREA_PAGE_LASTMOD })),
   { loc: `${SITE_URL}/contact.html`, lastmod: STATIC_PAGE_LASTMOD },
 ];
 
