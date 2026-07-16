@@ -344,7 +344,7 @@ function buildFaqSectionHtml(faq) {
   return `<div class="blog-faq"><h2 id="faq">Frequently Asked Questions</h2>${items}</div>`;
 }
 
-function buildArticleSchema({ title, metaDescription, dateIso, slug }) {
+function buildArticleSchema({ title, metaDescription, dateIso, filename }) {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
@@ -358,7 +358,7 @@ function buildArticleSchema({ title, metaDescription, dateIso, slug }) {
       name: "Mosquito Man Plus",
       logo: { "@type": "ImageObject", url: `${SITE_URL}/assets/img/logo.png` },
     },
-    mainEntityOfPage: `${SITE_URL}/blog/${slug}.html`,
+    mainEntityOfPage: `${SITE_URL}/blog/${filename}`,
   });
 }
 
@@ -469,7 +469,8 @@ async function main() {
     .replaceAll("{{DATE_ISO}}", dateIso)
     .replaceAll("{{DATE_DISPLAY}}", dateDisplay)
     .replaceAll("{{SLUG}}", slug)
-    .replaceAll("{{ARTICLE_SCHEMA_JSON}}", buildArticleSchema({ title, metaDescription, dateIso, slug }))
+    .replaceAll("{{FILENAME}}", filename)
+    .replaceAll("{{ARTICLE_SCHEMA_JSON}}", buildArticleSchema({ title, metaDescription, dateIso, filename }))
     .replaceAll("{{FAQ_SCHEMA_SCRIPT}}", buildFaqSchemaScript(raw.faq))
     .replaceAll("{{TLDR_HTML}}", buildTldrHtml(raw.tldr))
     .replaceAll("{{FEATURED_IMAGE_HTML}}", buildFeaturedImageHtml(image, topic))
