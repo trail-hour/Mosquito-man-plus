@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BLOG_DIR = path.join(__dirname, "..", "blog");
-const SITE_URL = "https://www.mosquitomanplus.com";
+const SITE_URL = "https://mosquitomanplus.com";
 const MAX_SUMMARY_LENGTH = 1500;
 
 function truncate(str, max) {

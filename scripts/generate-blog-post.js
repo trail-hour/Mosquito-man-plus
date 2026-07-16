@@ -17,7 +17,7 @@ const BLOG_DIR = path.join(ROOT, "blog");
 const TEMPLATE_PATH = path.join(BLOG_DIR, "template.html");
 const INDEX_PATH = path.join(BLOG_DIR, "index.html");
 const SITEMAP_PATH = path.join(ROOT, "sitemap.xml");
-const SITE_URL = "https://www.mosquitomanplus.com";
+const SITE_URL = "https://mosquitomanplus.com";
 
 // Fixed lastmod for the pages this job never touches. Update by hand if you
 // substantially edit one of these pages.
