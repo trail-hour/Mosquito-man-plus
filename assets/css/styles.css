@@ -220,7 +220,8 @@ button {
 }
 
 /* ============ buttons ============ */
-.button {
+.button,
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -236,7 +237,8 @@ button {
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
-.button:hover {
+.button:hover,
+.btn-primary:hover {
   transform: translateY(-2px);
   background: var(--brand-light);
 }
@@ -1512,6 +1514,190 @@ h1, h2, h3, p {
   transform: none;
 }
 
+/* ============ city landing pages (expanded area content) ============ */
+.city-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 158px var(--pad) 64px;
+  text-align: center;
+  background: radial-gradient(ellipse 700px 380px at 50% 0%, rgba(var(--brand-rgb), 0.12), transparent 65%);
+}
+
+.city-hero h1 {
+  margin-bottom: 16px;
+  font-size: 56px;
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.city-tagline {
+  max-width: 640px;
+  margin: 0 auto 28px;
+  color: var(--soft);
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.city-intro,
+.city-problem,
+.city-how,
+.city-services,
+.city-guarantee,
+.city-faq {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 72px var(--pad);
+  border-top: 1px solid var(--line);
+}
+
+.city-intro h2,
+.city-problem h2,
+.city-how h2,
+.city-services h2,
+.city-guarantee h2,
+.city-faq h2 {
+  margin-bottom: 20px;
+  max-width: 720px;
+  font-size: 40px;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.city-intro p,
+.city-problem p,
+.city-how p,
+.city-guarantee p {
+  max-width: 720px;
+  color: var(--soft);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.city-intro p + p {
+  margin-top: 18px;
+}
+
+.city-problem ul,
+.city-services ul,
+.city-how ol {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.city-problem li,
+.city-services li,
+.city-how li {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--soft);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.city-problem strong,
+.city-services strong {
+  color: var(--brand);
+}
+
+.city-how ol {
+  counter-reset: city-step;
+}
+
+.city-how li {
+  position: relative;
+  padding-left: 54px;
+  counter-increment: city-step;
+}
+
+.city-how li::before {
+  content: counter(city-step);
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.city-how li strong {
+  color: var(--ink);
+}
+
+.city-guarantee {
+  text-align: center;
+}
+
+.city-guarantee p {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)), var(--panel);
+  font-size: 17px;
+}
+
+.faq-item {
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.faq-item:first-of-type {
+  padding-top: 24px;
+  border-top: none;
+}
+
+.faq-item h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.faq-item p {
+  margin: 0;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.city-cta {
+  padding: 84px var(--pad);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #090c09;
+}
+
+.city-cta h2 {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-size: 40px;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.city-cta p {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  color: var(--soft);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
 /* ============ responsive ============ */
 @media (max-width: 980px) {
   .site-header {
@@ -1583,6 +1769,20 @@ h1, h2, h3, p {
   .subhero h1 {
     font-size: 52px;
   }
+
+  .city-hero h1 {
+    font-size: 44px;
+  }
+
+  .city-intro h2,
+  .city-problem h2,
+  .city-how h2,
+  .city-services h2,
+  .city-guarantee h2,
+  .city-faq h2,
+  .city-cta h2 {
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -1648,6 +1848,21 @@ h1, h2, h3, p {
     min-height: 86vh;
     padding-top: 122px;
     padding-bottom: 40px;
+  }
+
+  .city-hero {
+    padding-top: 122px;
+  }
+
+  .city-intro,
+  .city-problem,
+  .city-how,
+  .city-services,
+  .city-guarantee,
+  .city-faq,
+  .city-cta {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 
   .hero-overlay {
