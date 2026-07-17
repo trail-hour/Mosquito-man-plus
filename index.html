@@ -285,6 +285,140 @@
 
 </main>
 
+<!-- ============ GOOGLE REVIEWS ============ -->
+<section class="reviews-section">
+  <div class="reviews-container">
+    <p class="reviews-label">What our customers say</p>
+    <h2 class="reviews-title">Google Reviews</h2>
+    <div class="reviews-overall">
+      <span class="reviews-score">5.0</span>
+      <span class="reviews-stars">★★★★★</span>
+      <span class="reviews-count">5-star rated on Google</span>
+    </div>
+
+    <div class="reviews-carousel-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <!-- Review 1 — Krunal Agrawal -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">KA</div>
+              <div class="review-meta">
+                <div class="review-name">Krunal A. <span class="review-badge">Local Guide</span></div>
+                <div class="review-date">July 2026</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Given a quick quote, came on time, reasonable price, completed the work. Was very satisfied with work and hired him for full season, and the next. I am in Oshawa, but he works all over Durham Region."</p>
+            <div class="review-tag">Great price &middot; $1&ndash;100</div>
+          </div>
+        </div>
+
+        <!-- Review 2 — Nil Agrawal -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">NA</div>
+              <div class="review-meta">
+                <div class="review-name">Nil A.</div>
+                <div class="review-date">July 2026</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Really great service and got everything what I was looking for in reasonable price."</p>
+            <div class="review-tag">Reasonable price</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="reviews-controls">
+      <button class="reviews-btn" id="reviewsPrev" aria-label="Previous review">&#8592;</button>
+      <div class="reviews-dots" id="reviewsDots"></div>
+      <button class="reviews-btn" id="reviewsNext" aria-label="Next review">&#8594;</button>
+    </div>
+
+    <a href="https://g.page/r/YOUR_GOOGLE_MAPS_LINK_HERE" target="_blank" rel="noopener" class="reviews-cta">
+      &#9733; See our reviews on Google Maps
+    </a>
+  </div>
+</section>
+
+<style>
+.reviews-section{padding:60px 20px;background:#f9f9f4;text-align:center}
+.reviews-container{max-width:680px;margin:0 auto}
+.reviews-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.reviews-title{font-size:28px;font-weight:600;color:#1a1a1a;margin-bottom:10px}
+.reviews-overall{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:36px}
+.reviews-score{font-size:28px;font-weight:700;color:#1a1a1a}
+.reviews-stars{color:#F4B91A;font-size:22px}
+.reviews-count{font-size:14px;color:#888}
+.reviews-carousel-wrap{overflow:hidden;border-radius:12px}
+.reviews-track{display:flex;transition:transform .4s ease}
+.review-slide{min-width:100%;box-sizing:border-box;padding:4px}
+.review-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:24px 28px;text-align:left}
+.review-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.review-avatar{width:42px;height:42px;border-radius:50%;background:#e8f5e9;color:#2e7d32;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.review-meta{flex:1}
+.review-name{font-size:15px;font-weight:600;color:#1a1a1a;display:flex;align-items:center;gap:8px}
+.review-badge{font-size:11px;font-weight:500;background:#e8f0fe;color:#1a73e8;padding:2px 8px;border-radius:20px}
+.review-date{font-size:12px;color:#aaa;margin-top:2px}
+.review-google-icon{flex-shrink:0}
+.review-stars{color:#F4B91A;font-size:16px;margin-bottom:10px}
+.review-text{font-size:15px;color:#444;line-height:1.7;margin-bottom:12px}
+.review-tag{display:inline-block;font-size:12px;color:#555;background:#f5f5f0;border:1px solid #e0e0e0;border-radius:20px;padding:4px 12px}
+.reviews-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px}
+.reviews-btn{width:34px;height:34px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#555;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.reviews-btn:hover{background:#f0f0f0}
+.reviews-dots{display:flex;gap:7px}
+.reviews-dot{width:7px;height:7px;border-radius:50%;background:#ddd;cursor:pointer;transition:background .2s}
+.reviews-dot.active{background:#2e7d32}
+.reviews-cta{display:inline-block;margin-top:24px;font-size:14px;color:#2e7d32;border:1px solid #2e7d32;border-radius:6px;padding:9px 20px;text-decoration:none;font-weight:500;transition:background .2s}
+.reviews-cta:hover{background:#f0f7f0}
+</style>
+
+<script>
+(function(){
+  var track=document.getElementById('reviewsTrack');
+  var slides=track.querySelectorAll('.review-slide');
+  var dotsEl=document.getElementById('reviewsDots');
+  var current=0,autoTimer;
+  slides.forEach(function(_,i){
+    var d=document.createElement('div');
+    d.className='reviews-dot'+(i===0?' active':'');
+    d.addEventListener('click',function(){goTo(i);resetTimer();});
+    dotsEl.appendChild(d);
+  });
+  function goTo(n){
+    current=(n+slides.length)%slides.length;
+    track.style.transform='translateX(-'+(current*100)+'%)';
+    dotsEl.querySelectorAll('.reviews-dot').forEach(function(d,i){d.classList.toggle('active',i===current);});
+  }
+  function resetTimer(){clearInterval(autoTimer);autoTimer=setInterval(function(){goTo(current+1);},6000);}
+  document.getElementById('reviewsPrev').addEventListener('click',function(){goTo(current-1);resetTimer();});
+  document.getElementById('reviewsNext').addEventListener('click',function(){goTo(current+1);resetTimer();});
+  resetTimer();
+})();
+</script>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-location">
