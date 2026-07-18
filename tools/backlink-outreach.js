@@ -335,6 +335,10 @@ async function sendEmail(to, toName, subject, body) {
   }
 
   try {
+    // Brevo rejects an empty-string "name" on the recipient — omit the key
+    // entirely rather than sending "" when no contact name was found.
+    const recipient = toName ? { email: to, name: toName } : { email: to };
+
     const res = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {
@@ -342,7 +346,7 @@ async function sendEmail(to, toName, subject, body) {
           name: CONFIG.senderName,
           email: CONFIG.senderEmail,
         },
-        to: [{ email: to, name: toName || "" }],
+        to: [recipient],
         subject,
         textContent: body,
       },
@@ -445,13 +449,15 @@ async function main() {
   console.log(`📬 Already contacted: ${alreadyContacted.size}`);
   console.log(`🎯 Daily limit: ${DAILY_LIMIT}\n`);
 
-  let sentCount = 0;
+  let sentCount = 0; // real send attempts this run — success OR fail both count, for the daily-limit gate
+  let successCount = 0; // actual successful sends, for reporting
+  let consecutiveFailures = 0;
   const logRows = [];
   const reportRows = []; // dry-run report table
 
   for (const site of targets) {
-    if (sentCount >= DAILY_LIMIT) {
-      console.log(`\n🛑 Hit daily limit of ${DAILY_LIMIT}. Run again tomorrow.`);
+    if (!DRY_RUN && sentCount >= DAILY_LIMIT) {
+      console.log(`\n🛑 Hit daily limit of ${DAILY_LIMIT} send attempts. Run again tomorrow.`);
       break;
     }
 
@@ -571,7 +577,25 @@ async function main() {
       flag: reachable === false ? "dead domain — verify before sending" : "",
     });
 
-    if (result.success && !DRY_RUN) sentCount++;
+    if (!DRY_RUN) {
+      sentCount++; // every real attempt counts, success or fail
+
+      if (result.success) {
+        successCount++;
+        consecutiveFailures = 0;
+      } else {
+        consecutiveFailures++;
+        console.log(`  ⚠️  Consecutive send failures: ${consecutiveFailures}/3`);
+        if (consecutiveFailures >= 3) {
+          console.log(
+            `\n🛑 3 consecutive send failures (latest: "${result.error}") — aborting run.\n` +
+            `   This usually means the API key is bad, not that these specific targets are unreachable.\n` +
+            `   Fix BREVO_API_KEY in tools/.env before retrying.`
+          );
+          break;
+        }
+      }
+    }
 
     // Human-like delay between sends
     if (!DRY_RUN) await sleep(CONFIG.delayBetweenMs);
@@ -605,7 +629,9 @@ async function main() {
     }
   }
 
-  console.log(`\n✅ Done. Emails sent today: ${DRY_RUN ? "0 (dry run)" : sentCount}`);
+  console.log(
+    `\n✅ Done. Emails sent today: ${DRY_RUN ? "0 (dry run)" : successCount} succeeded / ${DRY_RUN ? 0 : sentCount} attempted`
+  );
   console.log(`📊 Full log: ${path.resolve(CONFIG.logFile)}\n`);
 }
 

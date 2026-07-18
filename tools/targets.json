@@ -8,46 +8,49 @@
   {
     "domain": "homestars.com",
     "type": "directory",
+    "email": "andrew.gillespie@homestars.com",
     "notes": "Top Canadian home services directory"
   },
   {
     "domain": "trustanalytica.org",
     "type": "directory",
-    "notes": "Canadian business reviews — competitor already listed here"
+    "notes": "Canadian business reviews — competitor already listed here. No email found via Hunter as of 2026-07-18."
   },
   {
     "domain": "profilecanada.com",
     "type": "directory",
-    "notes": "Canadian business directory"
+    "notes": "Canadian business directory. No email found via Hunter as of 2026-07-18."
   },
   {
     "domain": "downtownlondon.ca",
     "type": "local",
+    "email": "barbara@downtownlondon.ca",
     "notes": "Ontario local directory"
   },
   {
     "domain": "canadareviewers.com",
     "type": "directory",
-    "notes": "Competitor has link here"
+    "notes": "Competitor has link here. No email found via Hunter as of 2026-07-18."
   },
   {
     "domain": "canadiannewsjournal.com",
     "type": "resource",
-    "notes": "Canadian news — accepts press releases"
+    "notes": "Canadian news — accepts press releases. No email found via Hunter as of 2026-07-18."
   },
   {
     "domain": "todayfromcanada.com",
     "type": "resource",
-    "notes": "Canadian content site — competitor listed"
+    "notes": "Canadian content site — competitor listed. No email found via Hunter as of 2026-07-18."
   },
   {
     "domain": "completepestcontrolchristchurch.co.nz",
     "type": "resource",
-    "notes": "Pest control resource page — good for niche relevance"
+    "notes": "Pest control resource page — good for niche relevance. No email found via Hunter as of 2026-07-18."
   },
   {
     "domain": "barriecareercentre.com",
     "type": "local",
+    "email": "info@barriecareercentre.com",
     "notes": "Ontario local site"
   }
 ]
