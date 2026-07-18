@@ -28,7 +28,7 @@ readers back to the homepage and `services.html`. Different intent, different te
 |---|---|---|
 | Mosquito Identification & Prevention in Durham Region | mosquito identification durham region | Written (existing) |
 | Standing Water Mosquito Breeding: A Durham Region Guide | standing water mosquito breeding durham region | Written (existing) |
-| What Attracts Mosquitoes to Your Yard in Durham Region | what attracts mosquitoes to your yard | Planned (gap) |
+| What Attracts Mosquitoes to Your Yard in Durham Region | what attracts mosquitoes to your yard | Written (2026-07-18) |
 
 ### Cluster 1 — Treatment Methods & Safety
 | Post | Keyword | Status |
@@ -51,11 +51,10 @@ readers back to the homepage and `services.html`. Different intent, different te
 | Mosquito & Tick Season in Durham Region: When to Start Treatment | mosquito tick season durham region | Written (2026-07-18) |
 | GTA Mosquito Season: A Durham Region Homeowner Guide (daily automation, absorbed) | GTA mosquito season | Written (existing) |
 
-**Coverage as of 2026-07-18:** 10/11 posts written (91%). Only "What Attracts Mosquitoes to
-Your Yard" remains unwritten. All 10 written spokes link to the pillar; the 4 new spokes also
-link to 2-3 siblings and 2-3 relevant area pages each. `TOPICS[]` in
-`scripts/generate-blog-post.js` no longer includes the 4 gap topics, since they were written
-manually instead.
+**Coverage as of 2026-07-18:** 11/11 posts written (100%). All spokes link to the pillar; the
+5 new spokes (cost, pet/kid safety, DIY vs. pro, season timeline, what-attracts) also link to
+2-3 siblings and 2-3 relevant area pages each. `TOPICS[]` in `scripts/generate-blog-post.js`
+no longer includes any of the 5 gap topics, since all were written manually instead.
 
 ## Internal Links Implemented This Run
 

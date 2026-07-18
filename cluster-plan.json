@@ -22,7 +22,7 @@
       "posts": [
         { "post_index": 0, "title": "Mosquito Identification & Prevention in Durham Region", "primary_keyword": "mosquito identification durham region", "intent": "informational", "template": "explainer", "url": "blog/2026-07-12-mosquito-identification-prevention-durham-region.html", "status": "written", "linked_to_pillar": true },
         { "post_index": 1, "title": "Standing Water Mosquito Breeding: A Durham Region Guide", "primary_keyword": "standing water mosquito breeding durham region", "intent": "informational", "template": "explainer", "url": "blog/2026-07-16-standing-water-mosquito-breeding-a-durham-region-guide.html", "status": "written", "linked_to_pillar": true },
-        { "post_index": 2, "title": "What Attracts Mosquitoes to Your Yard in Durham Region", "primary_keyword": "what attracts mosquitoes to your yard", "intent": "informational", "template": "explainer", "word_count_target": [900, 1100], "status": "planned", "linked_to_pillar": false }
+        { "post_index": 2, "title": "What Attracts Mosquitoes to Your Yard in Durham Region", "primary_keyword": "what attracts mosquitoes to your yard", "intent": "informational", "template": "explainer", "url": "blog/2026-07-18-what-attracts-mosquitoes-to-your-yard-durham-region.html", "status": "written", "linked_to_pillar": true }
       ]
     },
     {
@@ -66,6 +66,9 @@
       { "from": "pillar", "to": "cluster-3-post-0", "type": "mandatory", "direction": "bidirectional" },
       { "from": "pillar", "to": "cluster-3-post-1", "type": "mandatory", "direction": "bidirectional" },
       { "from": "pillar", "to": "cluster-3-post-2", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "pillar", "to": "cluster-0-post-2", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "cluster-0-post-2", "to": "cluster-0-post-0", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-0-post-2", "to": "cluster-0-post-1", "type": "sibling", "direction": "one-way" },
       { "from": "cluster-2-post-2", "to": "cluster-2-post-0", "type": "sibling", "direction": "one-way" },
       { "from": "cluster-2-post-2", "to": "cluster-2-post-1", "type": "sibling", "direction": "one-way" },
       { "from": "cluster-1-post-1", "to": "cluster-1-post-0", "type": "sibling", "direction": "one-way" },
@@ -76,18 +79,17 @@
       { "from": "cluster-3-post-1", "to": "cluster-3-post-2", "type": "sibling", "direction": "one-way" }
     ],
     "pending": [
-      { "from": "pillar", "to": "cluster-0-post-2", "type": "mandatory", "note": "spoke not yet written" },
-      { "from": "cluster-0-post-0", "to": "cluster-0-post-1", "type": "recommended", "note": "within-cluster spoke-to-spoke, deferred" },
+      { "from": "cluster-0-post-0", "to": "cluster-0-post-1", "type": "recommended", "note": "within-cluster spoke-to-spoke on the 7 original posts, deferred" },
       { "from": "cluster-1-post-0", "to": "cluster-2-post-0", "type": "cross-cluster", "note": "deferred" }
     ]
   },
-  "automation_note": "scripts/generate-blog-post.js runs daily via .github/workflows/daily-blog.yml. As of 2026-07-18 it auto-links new posts to 2-3 relevant area pages plus the pillar (ALLOWED_LINK_HREFS is now built per-post instead of a fixed 2-link set). The 4 gap topics that were in TOPICS[] have been removed since they were written manually this run; only 'what attracts mosquitoes to your yard' (cluster 0) remains unwritten and not in TOPICS[].",
-  "execution_scope_this_run": "pillar_plus_4_gap_spokes",
+  "automation_note": "scripts/generate-blog-post.js runs daily via .github/workflows/daily-blog.yml. As of 2026-07-18 it auto-links new posts to 2-3 relevant area pages plus the pillar (ALLOWED_LINK_HREFS is now built per-post instead of a fixed 2-link set). All 5 gap topics that were in TOPICS[] have been removed since all were written manually instead.",
+  "execution_scope_this_run": "full_cluster_complete",
   "scorecard": {
-    "coverage": "10/11 posts written (91%); 1 planned (cluster-0-post-2)",
-    "pillar_connectivity": "100% (10/10 written spokes link to pillar, bidirectional)",
+    "coverage": "11/11 posts written (100%)",
+    "pillar_connectivity": "100% (11/11 written spokes link to pillar, bidirectional)",
     "orphan_pages": 0,
     "cannibalization": 0,
-    "sibling_link_density": "new spokes carry 2-3 sibling links each; pre-existing 7 spokes still lack sibling links (only pillar links), deferred"
+    "sibling_link_density": "5 new spokes carry 2-3 sibling links each; pre-existing 6 original posts + the daily-automation GTA post still only carry the pillar link, no sibling links (deferred, see links.pending)"
   }
 }
