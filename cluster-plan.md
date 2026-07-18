@@ -34,24 +34,28 @@ readers back to the homepage and `services.html`. Different intent, different te
 | Post | Keyword | Status |
 |---|---|---|
 | Mosquito Spray Guide for Durham Region Homeowners | mosquito spray durham region | Written (existing) |
-| Is Mosquito Spraying Safe for Pets and Kids in Durham Region? | mosquito spraying safe for pets and kids | Planned (gap) |
-| DIY vs Professional Mosquito Control in Durham Region | diy vs professional mosquito control | Planned (gap) |
+| Is Mosquito Spraying Safe for Pets and Kids in Durham Region? | mosquito spraying safe for pets and kids | Written (2026-07-18) |
+| DIY vs Professional Mosquito Control in Durham Region | diy vs professional mosquito control | Written (2026-07-18) |
 
 ### Cluster 2 — Local Service Guides
 | Post | Keyword | Status |
 |---|---|---|
 | Mosquito Control Oshawa: A Homeowner's Guide | mosquito control oshawa | Written (existing) |
 | Mosquito Exterminator Whitby Ajax Pickering Guide | mosquito exterminator whitby ajax pickering | Written (existing) |
-| Mosquito Control Cost in Durham Region: 2026 Pricing Guide | mosquito control cost durham region | Planned (gap) |
+| Mosquito Control Cost in Durham Region: 2026 Pricing Guide | mosquito control cost durham region | Written (2026-07-18) |
 
 ### Cluster 3 — Related Pests & Timing
 | Post | Keyword | Status |
 |---|---|---|
 | Tick Control Durham: A Homeowner's Guide | tick control durham region | Written (existing) |
-| Mosquito & Tick Season in Durham Region: When to Start Treatment | mosquito tick season durham region | Planned (gap) |
+| Mosquito & Tick Season in Durham Region: When to Start Treatment | mosquito tick season durham region | Written (2026-07-18) |
+| GTA Mosquito Season: A Durham Region Homeowner Guide (daily automation, absorbed) | GTA mosquito season | Written (existing) |
 
-**Coverage this run:** 1/1 pillar written. 6/6 existing spokes now link to the pillar. 4 gap
-spokes identified but not written (out of "pillar only" scope).
+**Coverage as of 2026-07-18:** 10/11 posts written (91%). Only "What Attracts Mosquitoes to
+Your Yard" remains unwritten. All 10 written spokes link to the pillar; the 4 new spokes also
+link to 2-3 siblings and 2-3 relevant area pages each. `TOPICS[]` in
+`scripts/generate-blog-post.js` no longer includes the 4 gap topics, since they were written
+manually instead.
 
 ## Internal Links Implemented This Run
 

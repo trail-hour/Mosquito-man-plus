@@ -1,6 +1,7 @@
 {
   "seed_keyword": "mosquito control durham region",
   "generated": "2026-07-17",
+  "updated": "2026-07-18",
   "site": "https://mosquitomanplus.com",
   "output_dir": "blog/",
   "differentiation_note": "index.html (homepage) remains the commercial/transactional page for 'mosquito control Durham Region' (service + booking intent). This pillar is the informational/broad hub (ultimate-guide) for the same theme, positioned in blog/ to unify existing spokes and avoid cannibalizing the homepage. Different template, different intent, cross-linked rather than competing.",
@@ -19,134 +20,36 @@
       "index": 0,
       "name": "Identification & Prevention",
       "posts": [
-        {
-          "post_index": 0,
-          "title": "Mosquito Identification & Prevention in Durham Region",
-          "primary_keyword": "mosquito identification durham region",
-          "intent": "informational",
-          "template": "explainer",
-          "url": "blog/2026-07-12-mosquito-identification-prevention-durham-region.html",
-          "status": "written",
-          "linked_to_pillar": true
-        },
-        {
-          "post_index": 1,
-          "title": "Standing Water Mosquito Breeding: A Durham Region Guide",
-          "primary_keyword": "standing water mosquito breeding durham region",
-          "intent": "informational",
-          "template": "explainer",
-          "url": "blog/2026-07-16-standing-water-mosquito-breeding-a-durham-region-guide.html",
-          "status": "written",
-          "linked_to_pillar": true
-        },
-        {
-          "post_index": 2,
-          "title": "What Attracts Mosquitoes to Your Yard in Durham Region",
-          "primary_keyword": "what attracts mosquitoes to your yard",
-          "intent": "informational",
-          "template": "explainer",
-          "word_count_target": [900, 1100],
-          "status": "planned",
-          "linked_to_pillar": false
-        }
+        { "post_index": 0, "title": "Mosquito Identification & Prevention in Durham Region", "primary_keyword": "mosquito identification durham region", "intent": "informational", "template": "explainer", "url": "blog/2026-07-12-mosquito-identification-prevention-durham-region.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 1, "title": "Standing Water Mosquito Breeding: A Durham Region Guide", "primary_keyword": "standing water mosquito breeding durham region", "intent": "informational", "template": "explainer", "url": "blog/2026-07-16-standing-water-mosquito-breeding-a-durham-region-guide.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 2, "title": "What Attracts Mosquitoes to Your Yard in Durham Region", "primary_keyword": "what attracts mosquitoes to your yard", "intent": "informational", "template": "explainer", "word_count_target": [900, 1100], "status": "planned", "linked_to_pillar": false }
       ]
     },
     {
       "index": 1,
       "name": "Treatment Methods & Safety",
       "posts": [
-        {
-          "post_index": 0,
-          "title": "Mosquito Spray Guide for Durham Region Homeowners",
-          "primary_keyword": "mosquito spray durham region",
-          "intent": "informational",
-          "template": "how-to",
-          "url": "blog/2026-07-12-mosquito-spray-guide-for-durham-region-homeowners.html",
-          "status": "written",
-          "linked_to_pillar": true
-        },
-        {
-          "post_index": 1,
-          "title": "Is Mosquito Spraying Safe for Pets and Kids in Durham Region?",
-          "primary_keyword": "mosquito spraying safe for pets and kids",
-          "intent": "informational",
-          "template": "explainer",
-          "word_count_target": [900, 1100],
-          "status": "planned",
-          "linked_to_pillar": false
-        },
-        {
-          "post_index": 2,
-          "title": "DIY vs Professional Mosquito Control in Durham Region",
-          "primary_keyword": "diy vs professional mosquito control",
-          "intent": "commercial",
-          "template": "comparison",
-          "word_count_target": [1200, 1500],
-          "status": "planned",
-          "linked_to_pillar": false
-        }
+        { "post_index": 0, "title": "Mosquito Spray Guide for Durham Region Homeowners", "primary_keyword": "mosquito spray durham region", "intent": "informational", "template": "how-to", "url": "blog/2026-07-12-mosquito-spray-guide-for-durham-region-homeowners.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 1, "title": "Is Mosquito Spraying Safe for Pets and Kids in Durham Region?", "primary_keyword": "mosquito spraying safe for pets and kids", "intent": "informational", "template": "explainer", "url": "blog/2026-07-17-is-mosquito-spraying-safe-for-pets-and-kids.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 2, "title": "DIY vs Professional Mosquito Control in Durham Region", "primary_keyword": "diy vs professional mosquito control", "intent": "commercial", "template": "comparison", "url": "blog/2026-07-17-diy-vs-professional-mosquito-control-durham-region.html", "status": "written", "linked_to_pillar": true }
       ]
     },
     {
       "index": 2,
       "name": "Local Service Guides",
       "posts": [
-        {
-          "post_index": 0,
-          "title": "Mosquito Control Oshawa: A Homeowner's Guide",
-          "primary_keyword": "mosquito control oshawa",
-          "intent": "commercial",
-          "template": "how-to",
-          "url": "blog/2026-07-12-mosquito-control-oshawa-a-homeowners-guide.html",
-          "status": "written",
-          "linked_to_pillar": true
-        },
-        {
-          "post_index": 1,
-          "title": "Mosquito Exterminator Whitby Ajax Pickering Guide",
-          "primary_keyword": "mosquito exterminator whitby ajax pickering",
-          "intent": "commercial",
-          "template": "how-to",
-          "url": "blog/2026-07-15-mosquito-exterminator-whitby-ajax-pickering-guide.html",
-          "status": "written",
-          "linked_to_pillar": true
-        },
-        {
-          "post_index": 2,
-          "title": "Mosquito Control Cost in Durham Region: 2026 Pricing Guide",
-          "primary_keyword": "mosquito control cost durham region",
-          "intent": "commercial",
-          "template": "explainer",
-          "word_count_target": [1200, 1500],
-          "status": "planned",
-          "linked_to_pillar": false
-        }
+        { "post_index": 0, "title": "Mosquito Control Oshawa: A Homeowner's Guide", "primary_keyword": "mosquito control oshawa", "intent": "commercial", "template": "how-to", "url": "blog/2026-07-12-mosquito-control-oshawa-a-homeowners-guide.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 1, "title": "Mosquito Exterminator Whitby Ajax Pickering Guide", "primary_keyword": "mosquito exterminator whitby ajax pickering", "intent": "commercial", "template": "how-to", "url": "blog/2026-07-15-mosquito-exterminator-whitby-ajax-pickering-guide.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 2, "title": "Mosquito Control Cost in Durham Region: 2026 Pricing Guide", "primary_keyword": "mosquito control cost durham region", "intent": "commercial", "template": "explainer", "url": "blog/2026-07-17-mosquito-control-cost-durham-region-pricing-guide.html", "status": "written", "linked_to_pillar": true }
       ]
     },
     {
       "index": 3,
       "name": "Related Pests & Timing",
       "posts": [
-        {
-          "post_index": 0,
-          "title": "Tick Control Durham: A Homeowner's Guide",
-          "primary_keyword": "tick control durham region",
-          "intent": "informational",
-          "template": "how-to",
-          "url": "blog/2026-07-13-tick-control-durham-a-homeowners-guide.html",
-          "status": "written",
-          "linked_to_pillar": true
-        },
-        {
-          "post_index": 1,
-          "title": "Mosquito & Tick Season in Durham Region: When to Start Treatment",
-          "primary_keyword": "mosquito tick season durham region",
-          "intent": "informational",
-          "template": "explainer",
-          "word_count_target": [900, 1100],
-          "status": "planned",
-          "linked_to_pillar": false
-        }
+        { "post_index": 0, "title": "Tick Control Durham: A Homeowner's Guide", "primary_keyword": "tick control durham region", "intent": "informational", "template": "how-to", "url": "blog/2026-07-13-tick-control-durham-a-homeowners-guide.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 1, "title": "Mosquito & Tick Season in Durham Region: When to Start Treatment", "primary_keyword": "mosquito tick season durham region", "intent": "informational", "template": "explainer", "url": "blog/2026-07-17-mosquito-tick-season-durham-region-timeline.html", "status": "written", "linked_to_pillar": true },
+        { "post_index": 2, "title": "GTA Mosquito Season: A Durham Region Homeowner Guide", "primary_keyword": "GTA mosquito season", "intent": "informational", "template": "explainer", "url": "blog/2026-07-17-gta-mosquito-season-a-durham-region-homeowner-guide.html", "status": "written", "linked_to_pillar": true, "note": "produced by the daily automation on 2026-07-17, absorbed into this cluster rather than left orphaned" }
       ]
     }
   ],
@@ -155,21 +58,36 @@
       { "from": "pillar", "to": "cluster-0-post-0", "type": "mandatory", "direction": "bidirectional" },
       { "from": "pillar", "to": "cluster-0-post-1", "type": "mandatory", "direction": "bidirectional" },
       { "from": "pillar", "to": "cluster-1-post-0", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "pillar", "to": "cluster-1-post-1", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "pillar", "to": "cluster-1-post-2", "type": "mandatory", "direction": "bidirectional" },
       { "from": "pillar", "to": "cluster-2-post-0", "type": "mandatory", "direction": "bidirectional" },
       { "from": "pillar", "to": "cluster-2-post-1", "type": "mandatory", "direction": "bidirectional" },
-      { "from": "pillar", "to": "cluster-3-post-0", "type": "mandatory", "direction": "bidirectional" }
+      { "from": "pillar", "to": "cluster-2-post-2", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "pillar", "to": "cluster-3-post-0", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "pillar", "to": "cluster-3-post-1", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "pillar", "to": "cluster-3-post-2", "type": "mandatory", "direction": "bidirectional" },
+      { "from": "cluster-2-post-2", "to": "cluster-2-post-0", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-2-post-2", "to": "cluster-2-post-1", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-1-post-1", "to": "cluster-1-post-0", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-1-post-1", "to": "cluster-1-post-2", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-1-post-2", "to": "cluster-1-post-0", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-1-post-2", "to": "cluster-1-post-1", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-3-post-1", "to": "cluster-3-post-0", "type": "sibling", "direction": "one-way" },
+      { "from": "cluster-3-post-1", "to": "cluster-3-post-2", "type": "sibling", "direction": "one-way" }
     ],
     "pending": [
       { "from": "pillar", "to": "cluster-0-post-2", "type": "mandatory", "note": "spoke not yet written" },
-      { "from": "pillar", "to": "cluster-1-post-1", "type": "mandatory", "note": "spoke not yet written" },
-      { "from": "pillar", "to": "cluster-1-post-2", "type": "mandatory", "note": "spoke not yet written" },
-      { "from": "pillar", "to": "cluster-2-post-2", "type": "mandatory", "note": "spoke not yet written" },
-      { "from": "pillar", "to": "cluster-3-post-1", "type": "mandatory", "note": "spoke not yet written" },
-      { "from": "cluster-0-post-0", "to": "cluster-0-post-1", "type": "recommended", "note": "within-cluster spoke-to-spoke, deferred to full cluster execution" },
-      { "from": "cluster-1-post-0", "to": "cluster-2-post-0", "type": "cross-cluster", "note": "deferred to full cluster execution" }
+      { "from": "cluster-0-post-0", "to": "cluster-0-post-1", "type": "recommended", "note": "within-cluster spoke-to-spoke, deferred" },
+      { "from": "cluster-1-post-0", "to": "cluster-2-post-0", "type": "cross-cluster", "note": "deferred" }
     ]
   },
-  "automation_note": "scripts/generate-blog-post.js runs daily via .github/workflows/daily-blog.yml and picks topics from a fixed TOPICS[] rotation, sanitizing out any internal link that isn't ../services.html or ../contact.html. The 4 'planned' spokes above are NOT in that rotation and will NOT be auto-generated, and even if added, the script would strip any cluster/pillar links it wrote. To auto-generate them with working cluster links, TOPICS[] and ALLOWED_LINK_HREFS in scripts/generate-blog-post.js need to be updated first -- out of scope for this pillar-only execution.",
-  "execution_scope_this_run": "pillar_only",
-  "scorecard_deferred": true
+  "automation_note": "scripts/generate-blog-post.js runs daily via .github/workflows/daily-blog.yml. As of 2026-07-18 it auto-links new posts to 2-3 relevant area pages plus the pillar (ALLOWED_LINK_HREFS is now built per-post instead of a fixed 2-link set). The 4 gap topics that were in TOPICS[] have been removed since they were written manually this run; only 'what attracts mosquitoes to your yard' (cluster 0) remains unwritten and not in TOPICS[].",
+  "execution_scope_this_run": "pillar_plus_4_gap_spokes",
+  "scorecard": {
+    "coverage": "10/11 posts written (91%); 1 planned (cluster-0-post-2)",
+    "pillar_connectivity": "100% (10/10 written spokes link to pillar, bidirectional)",
+    "orphan_pages": 0,
+    "cannibalization": 0,
+    "sibling_link_density": "new spokes carry 2-3 sibling links each; pre-existing 7 spokes still lack sibling links (only pillar links), deferred"
+  }
 }

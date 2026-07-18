@@ -64,10 +64,6 @@ const TOPICS = [
   "mosquito spray North York Ontario",
   "mosquito control Mississauga Ontario",
   "mosquito exterminator Vaughan Ontario",
-  "mosquito treatment cost Durham Region",
-  "is mosquito spraying safe for pets and kids",
-  "DIY vs professional mosquito control",
-  "tick season Ontario timeline",
 ];
 
 // Display names for AREA_SLUGS, used to match a topic string to relevant
