@@ -1,0 +1,53 @@
+[
+  {
+    "domain": "bbb.org",
+    "type": "directory",
+    "email": "info@bbb.org",
+    "notes": "Better Business Bureau — high priority"
+  },
+  {
+    "domain": "homestars.com",
+    "type": "directory",
+    "notes": "Top Canadian home services directory"
+  },
+  {
+    "domain": "trustanalytica.org",
+    "type": "directory",
+    "notes": "Canadian business reviews — competitor already listed here"
+  },
+  {
+    "domain": "profilecanada.com",
+    "type": "directory",
+    "notes": "Canadian business directory"
+  },
+  {
+    "domain": "downtownlondon.ca",
+    "type": "local",
+    "notes": "Ontario local directory"
+  },
+  {
+    "domain": "canadareviewers.com",
+    "type": "directory",
+    "notes": "Competitor has link here"
+  },
+  {
+    "domain": "canadiannewsjournal.com",
+    "type": "resource",
+    "notes": "Canadian news — accepts press releases"
+  },
+  {
+    "domain": "todayfromcanada.com",
+    "type": "resource",
+    "notes": "Canadian content site — competitor listed"
+  },
+  {
+    "domain": "completepestcontrolchristchurch.co.nz",
+    "type": "resource",
+    "notes": "Pest control resource page — good for niche relevance"
+  },
+  {
+    "domain": "barriecareercentre.com",
+    "type": "local",
+    "notes": "Ontario local site"
+  }
+]
