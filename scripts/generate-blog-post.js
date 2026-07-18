@@ -64,7 +64,41 @@ const TOPICS = [
   "mosquito spray North York Ontario",
   "mosquito control Mississauga Ontario",
   "mosquito exterminator Vaughan Ontario",
+  "mosquito treatment cost Durham Region",
+  "is mosquito spraying safe for pets and kids",
+  "DIY vs professional mosquito control",
+  "tick season Ontario timeline",
 ];
+
+// Display names for AREA_SLUGS, used to match a topic string to relevant
+// area pages and to write natural anchor text for those links.
+const AREA_DISPLAY = {
+  oshawa: "Oshawa", whitby: "Whitby", ajax: "Ajax", pickering: "Pickering",
+  clarington: "Clarington", bowmanville: "Bowmanville", courtice: "Courtice",
+  newcastle: "Newcastle", brooklin: "Brooklin", "port-perry": "Port Perry",
+  scugog: "Scugog", uxbridge: "Uxbridge", scarborough: "Scarborough",
+  "north-york": "North York", mississauga: "Mississauga", vaughan: "Vaughan",
+};
+
+// The pillar/hub post every generated spoke should link back to. Same
+// directory as the generated posts, so a bare filename href is correct.
+const PILLAR_URL = "2026-07-17-mosquito-control-durham-region-complete-guide.html";
+
+// Picks 3 area pages relevant to a topic: any city named in the topic
+// string first, then a deterministic rotation (seeded by post count) to
+// fill the rest, so topics with no named city still vary across posts
+// instead of always linking the same three cities.
+function pickAreaSlugsForTopic(topic, existingCount) {
+  const lowerTopic = topic.toLowerCase();
+  const picks = AREA_SLUGS.filter((slug) => lowerTopic.includes(AREA_DISPLAY[slug].toLowerCase()));
+  let cursor = existingCount % AREA_SLUGS.length;
+  while (picks.length < 3) {
+    const slug = AREA_SLUGS[cursor % AREA_SLUGS.length];
+    if (!picks.includes(slug)) picks.push(slug);
+    cursor += 1;
+  }
+  return picks.slice(0, 3);
+}
 
 // Paired with topics to keep 30 posts/month from reading as near-duplicates
 // of each other — same keyword, different real angle each rotation.
@@ -79,9 +113,10 @@ const ANGLES = [
   "an expert Q&A",
 ];
 
-// The only two internal links a generated post is allowed to contain.
-// Anything else Claude produces gets stripped in sanitizeInternalLinks().
-const ALLOWED_LINK_HREFS = new Set(["../services.html", "../contact.html"]);
+// Every generated post must contain these two links; sanitizeInternalLinks()
+// additionally allows the post's picked area-page links and the pillar link
+// (computed per-post in main()), and strips anything else Claude produces.
+const BASE_ALLOWED_HREFS = new Set(["../services.html", "../contact.html"]);
 
 function slugify(text) {
   return text
@@ -153,7 +188,11 @@ function getTorontoDateParts(date = new Date()) {
   return { iso, display };
 }
 
-async function callClaude(topic, angle) {
+async function callClaude(topic, angle, areaSlugs) {
+  const areaLinksList = areaSlugs
+    .map((slug) => `href="../areas/${slug}.html" (anchor text naming ${AREA_DISPLAY[slug]})`)
+    .join(", ");
+
   const prompt = `You are writing an SEO blog post for Mosquito Man Plus, a mosquito control company based in Oshawa, Ontario, serving Durham Region and the GTA (Whitby, Ajax, Pickering, Clarington, Bowmanville, Courtice, Newcastle, Brooklin, Port Perry, Scugog, Uxbridge, Brock, Scarborough, North York, Mississauga, Vaughan). Phone: 905-924-2847.
 
 Write the post as ${angle}, targeting this topic/keyword: "${topic}".
@@ -165,7 +204,10 @@ Requirements:
 - Use H2 subheadings that include related keywords/phrases (not generic labels like "Introduction").
 - Naturally mention "Mosquito Man Plus" and at least two specific service areas (e.g. Oshawa, Whitby, Ajax, Pickering, Durham Region, GTA) throughout the body — not just once at the start.
 - If the topic above names a specific city or region (e.g. Oshawa, Whitby, Ajax, Pickering, Clarington, Bowmanville, Courtice, Brooklin, Port Perry, Scarborough, North York, Mississauga, Vaughan, Durham Region, GTA), mention that exact place name naturally 4-5 times spread across the article, not clustered in one paragraph — it should read as a resident would write it, not as keyword stuffing.
-- Include exactly ONE internal link with href="../services.html" (anchor text naturally referencing our mosquito control services) and exactly ONE internal link with href="../contact.html" (anchor text naturally inviting the reader to request a quote). Place both naturally inside body paragraphs. Do not include any other links.
+- Include exactly ONE internal link with href="../services.html" (anchor text naturally referencing our mosquito control services) and exactly ONE internal link with href="../contact.html" (anchor text naturally inviting the reader to request a quote).
+- Also include exactly ONE internal link each to these ${areaSlugs.length} area pages, placed naturally wherever that city is mentioned: ${areaLinksList}.
+- Also include exactly ONE internal link with href="${PILLAR_URL}" (anchor text naturally referencing our complete Durham Region mosquito control guide), placed naturally in the body.
+- Place all links naturally inside body paragraphs, at most one link per sentence. Do not include any links other than the ones listed above.
 - Use semantic HTML only in bodyHtml: <p>, <h2>, <h3>, <ul>, <ol>, <li>, and the two <a href="..."> links described above. No <h1> (rendered separately). No inline styles, no <script>, no <img>, no markdown formatting.
 - Do NOT invent statistics, scientific studies, awards, certifications, or customer testimonials/reviews. Only mention these verified facts if relevant: Mosquito Man Plus is Oshawa-based, uses EPA/PMRA-registered products, and offers a return-visit guarantee on seasonal programs.
 - Do NOT include a closing sales pitch, "About the Author" text, or contact details in bodyHtml — those are appended separately by the site template.
@@ -281,16 +323,16 @@ function uniqueSlugAndFilename(baseSlug, dateIso) {
 // Strips any <a> tag whose href isn't one of the two whitelisted relative
 // links, keeping the visible text. Guards against a hallucinated/broken URL
 // making it into a fully unsupervised daily publish.
-function sanitizeInternalLinks(bodyHtml) {
+function sanitizeInternalLinks(bodyHtml, allowedHrefs) {
   const found = new Set();
   const cleaned = bodyHtml.replace(/<a\s+href="([^"]*)"[^>]*>(.*?)<\/a>/gi, (match, href, inner) => {
-    if (ALLOWED_LINK_HREFS.has(href)) {
+    if (allowedHrefs.has(href)) {
       found.add(href);
       return match;
     }
     return inner;
   });
-  for (const href of ALLOWED_LINK_HREFS) {
+  for (const href of allowedHrefs) {
     if (!found.has(href)) console.warn(`Warning: expected internal link to "${href}" was missing or stripped`);
   }
   return cleaned;
@@ -429,7 +471,14 @@ async function main() {
   const topic = TOPICS[existingCount % TOPICS.length];
   const angle = ANGLES[Math.floor(existingCount / TOPICS.length) % ANGLES.length];
 
-  console.log(`Generating post #${existingCount + 1}: topic="${topic}", angle="${angle}"${DRY_RUN ? " [dry run]" : ""}`);
+  const areaSlugs = pickAreaSlugsForTopic(topic, existingCount);
+  const allowedHrefs = new Set([
+    ...BASE_ALLOWED_HREFS,
+    ...areaSlugs.map((slug) => `../areas/${slug}.html`),
+    PILLAR_URL,
+  ]);
+
+  console.log(`Generating post #${existingCount + 1}: topic="${topic}", angle="${angle}", areas=${areaSlugs.join(",")}${DRY_RUN ? " [dry run]" : ""}`);
 
   const raw = DRY_RUN
     ? {
@@ -442,7 +491,7 @@ async function main() {
           '<h2>First Section</h2><p>Dry-run placeholder paragraph. Read more about our <a href="../services.html">mosquito control services</a>.</p><h2>Second Section</h2><p>Another placeholder paragraph. <a href="../contact.html">Request a quote</a> to test the link.</p>',
         faq: [{ question: "Is this a real post?", answer: "No, this is dry-run test content." }],
       }
-    : await callClaude(topic, angle);
+    : await callClaude(topic, angle, areaSlugs);
 
   const image = DRY_RUN
     ? { url: "https://images.pexels.com/photos/0000000/dry-run-placeholder.jpg", photographer: "Dry Run Photographer" }
@@ -455,7 +504,7 @@ async function main() {
   const baseSlug = slugify(title) || `post-${dateIso}`;
   const { slug, filename } = uniqueSlugAndFilename(baseSlug, dateIso);
 
-  const sanitizedBody = sanitizeInternalLinks(raw.bodyHtml);
+  const sanitizedBody = sanitizeInternalLinks(raw.bodyHtml, allowedHrefs);
   const { bodyHtml, toc } = injectHeadingIdsAndBuildToc(sanitizedBody);
   if (raw.faq.length) toc.push({ id: "faq", text: "Frequently Asked Questions" });
 
