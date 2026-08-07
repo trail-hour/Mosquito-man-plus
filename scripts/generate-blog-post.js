@@ -188,8 +188,17 @@ function getTorontoDateParts(date = new Date()) {
 // hand-type an escaped JSON string containing HTML-with-quoted-attributes as
 // prose. That approach was fragile: any time the model forgot to escape an
 // internal quote (e.g. inside an href="...") the whole response failed to
-// parse. tool_choice guarantees a structured, correctly-encoded object back
-// — this failure class is now structurally impossible, not just less likely.
+// parse.
+//
+// Array-typed fields are deliberately avoided in this schema: a first attempt
+// used array-of-string (keyTakeaways) and array-of-object (faq) fields, and
+// in two separate real runs the model leaked malformed pseudo-XML
+// ("<parameter name=\"item\">...") into those specific fields while every
+// plain string field came through clean both times — a real, repeatable
+// quirk with this model/schema shape, not a fluke. keyTakeaways and faq are
+// plain newline-delimited strings instead, parsed into arrays below; that
+// keeps the guarantee that matters (no more hand-escaped JSON-in-prose for
+// bodyHtml) without hitting the array-serialization quirk.
 const BLOG_POST_TOOL = {
   name: "publish_blog_post",
   description: "Submit the completed blog post content.",
@@ -204,30 +213,41 @@ const BLOG_POST_TOOL = {
       excerpt: { type: "string", description: "One-sentence teaser for a blog listing card, under 160 characters" },
       tldr: { type: "string", description: "2-3 plain-text sentences summarizing the whole article" },
       keyTakeaways: {
-        type: "array",
-        items: { type: "string" },
-        description: "3-5 short plain-text bullet points summarizing the article's most useful points",
+        type: "string",
+        description:
+          "3-5 short plain-text bullet points summarizing the article's most useful points, one per line, plain sentences with no leading bullet character, number, or dash",
       },
       bodyHtml: {
         type: "string",
         description: "The article body as a single HTML string using only the tags described in the prompt",
       },
       faq: {
-        type: "array",
-        items: {
-          type: "object",
-          properties: {
-            question: { type: "string" },
-            answer: { type: "string", description: "Plain-text answer, 1-3 sentences" },
-          },
-          required: ["question", "answer"],
-        },
-        description: "4-5 realistic homeowner questions related to the topic",
+        type: "string",
+        description:
+          '4-5 realistic homeowner questions related to the topic. Format as plain text pairs, one pair per block separated by a blank line, each block exactly two lines: "Q: <question>" then "A: <plain-text answer, 1-3 sentences>". No HTML, no numbering.',
       },
     },
     required: ["title", "metaDescription", "excerpt", "tldr", "keyTakeaways", "bodyHtml", "faq"],
   },
 };
+
+function parseKeyTakeaways(raw) {
+  return raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+function parseFaq(raw) {
+  return raw
+    .split(/\n\s*\n/)
+    .map((block) => {
+      const question = block.match(/Q:\s*(.+)/i)?.[1]?.trim();
+      const answer = block.match(/A:\s*([\s\S]+)/i)?.[1]?.trim();
+      return question && answer ? { question, answer } : null;
+    })
+    .filter(Boolean);
+}
 
 async function callClaude(topic, angle, areaSlugs) {
   const areaLinksList = areaSlugs
@@ -253,8 +273,8 @@ Requirements:
 - Do NOT invent statistics, scientific studies, awards, certifications, or customer testimonials/reviews. Only mention these verified facts if relevant: Mosquito Man Plus is Oshawa-based, uses EPA/PMRA-registered products, and offers a return-visit guarantee on seasonal programs.
 - Do NOT include a closing sales pitch, "About the Author" text, or contact details in bodyHtml — those are appended separately by the site template.
 - Do NOT repeat the title verbatim as a heading inside the body.
-- faq must contain 4-5 realistic homeowner questions related to "${topic}", each with a plain-text (no HTML) answer of 1-3 sentences.
-- keyTakeaways must contain 3-5 short plain-text bullet points summarizing the article's most useful points.
+- faq must contain 4-5 realistic homeowner questions related to "${topic}", each with a plain-text (no HTML) answer of 1-3 sentences, formatted as described in the tool schema (Q:/A: pairs, one blank line between pairs).
+- keyTakeaways must contain 3-5 short plain-text bullet points summarizing the article's most useful points, one per line as described in the tool schema.
 - tldr must be 2-3 plain-text sentences summarizing the whole article.
 
 Submit the finished post via the publish_blog_post tool.`;
@@ -305,7 +325,13 @@ Submit the finished post via the publish_blog_post tool.`;
   for (const key of ["title", "metaDescription", "excerpt", "tldr", "keyTakeaways", "bodyHtml", "faq"]) {
     if (!parsed[key]) throw new Error(`Claude response missing "${key}"`);
   }
-  return parsed;
+
+  const keyTakeaways = parseKeyTakeaways(parsed.keyTakeaways);
+  const faq = parseFaq(parsed.faq);
+  if (!keyTakeaways.length) throw new Error(`Could not parse any keyTakeaways from:\n${parsed.keyTakeaways}`);
+  if (!faq.length) throw new Error(`Could not parse any faq entries from:\n${parsed.faq}`);
+
+  return { ...parsed, keyTakeaways, faq };
 }
 
 // Looks up one photo for the post's topic via the Pexels API. Never throws —
