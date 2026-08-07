@@ -1,0 +1,258 @@
+{
+  "oshawa": {
+    "name": "Oshawa",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Oshawa Creek", "Farewell Creek", "Harmony Creek", "Lake Ontario", "Second Marsh"],
+    "mosquito_pressure_drivers": [
+      "Second Marsh, a 140-hectare provincially significant coastal wetland on the Lake Ontario shore in southeast Oshawa",
+      "Harmony Valley Conservation Area (~28 hectares of hardwood forest, meadow, and wetland along Harmony Creek)",
+      "the Oshawa Creek valley corridor, which runs the length of the city from the Oak Ridges Moraine to the lake"
+    ],
+    "neighborhoods": ["Pinecrest", "Eastdale", "O'Neill", "Donevan", "Samac", "Kedron", "Windfields", "Taunton", "McLaughlin", "Lakeview"],
+    "local_landmarks": ["Second Marsh", "Harmony Valley Conservation Area", "Oshawa Creek Bike Path"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Whitby", "Courtice", "Clarington"],
+    "service_notes": ""
+  },
+  "whitby": {
+    "name": "Whitby",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Whitby Harbour", "Lynde Creek", "Pringle Creek", "Corbett Creek"],
+    "mosquito_pressure_drivers": [
+      "Lynde Shores Conservation Area/Cranberry Marsh, a 272-hectare provincially significant coastal wetland at the mouth of Lynde Creek",
+      "Pringle Creek's groundwater-fed headwaters draining bluffs left from glacial Lake Iroquois",
+      "the Lynde Creek watershed, which extends north into rural/moraine land toward Uxbridge"
+    ],
+    "neighborhoods": ["Brooklin", "Port Whitby", "Williamsburg", "Rolling Acres"],
+    "local_landmarks": ["Lynde Shores Conservation Area", "Cranberry Marsh", "Heber Down Conservation Area"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Oshawa", "Ajax", "Brooklin"],
+    "service_notes": ""
+  },
+  "ajax": {
+    "name": "Ajax",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Duffins Creek", "Carruthers Creek", "Lake Ontario"],
+    "mosquito_pressure_drivers": [
+      "Duffins Marsh along the Duffins Creek Trail, with lookouts over marsh birdlife",
+      "Carruthers Marsh on the eastern Ajax waterfront",
+      "the Ajax Waterfront Trail corridor, which follows creek valleys through several neighborhoods"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Carruthers Marsh", "Duffins Marsh", "Rotary Park", "Ajax Waterfront"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Pickering", "Whitby", "Oshawa"],
+    "service_notes": ""
+  },
+  "pickering": {
+    "name": "Pickering",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Petticoat Creek", "Frenchman's Bay", "Rouge River"],
+    "mosquito_pressure_drivers": [
+      "Petticoat Creek Conservation Area on the Lake Ontario shore",
+      "Frenchman's Bay, a nature preserve/bay ringed by residential neighborhoods (Bay Ridges, West Shore, Fairport)",
+      "the Rouge River corridor along Pickering's western edge"
+    ],
+    "neighborhoods": ["Bay Ridges", "West Shore", "Fairport"],
+    "local_landmarks": ["Petticoat Creek Conservation Area", "Frenchman's Bay", "Monarch Trail"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Ajax", "Scarborough", "Whitby"],
+    "service_notes": ""
+  },
+  "clarington": {
+    "name": "Clarington",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Bowmanville Creek", "Soper Creek", "Wilmot Creek", "Graham Creek", "Farewell Creek", "Darlington Creek", "Lake Ontario"],
+    "mosquito_pressure_drivers": [
+      "Bowmanville/Westside Marshes, over 80 hectares including two provincially significant coastal wetlands (Bowmanville Marsh and Westside Marsh)",
+      "Stephen's Gulch Conservation Area (354 acres of forest and swamp bordering Soper Creek)",
+      "Samuel Wilmot Nature Area, a 77-hectare bog/nature area at the Wilmot Creek outlet"
+    ],
+    "neighborhoods": ["Bowmanville", "Courtice", "Newcastle"],
+    "local_landmarks": ["Bowmanville/Westside Marshes Conservation Area", "Stephen's Gulch Conservation Area", "Samuel Wilmot Nature Area"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Bowmanville", "Courtice", "Newcastle"],
+    "service_notes": "Municipality-wide page; Bowmanville, Courtice, and Newcastle have their own more specific pages."
+  },
+  "bowmanville": {
+    "name": "Bowmanville",
+    "region": "Clarington, Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Bowmanville Creek", "Soper Creek", "Lake Ontario"],
+    "mosquito_pressure_drivers": [
+      "Bowmanville/Westside Marshes Conservation Area (80+ hectares, two provincially significant coastal wetlands)",
+      "Bowmanville Valley Conservation Area, part of watershed/flood management for the Bowmanville-Soper Creek system",
+      "Stephen's Gulch Conservation Area bordering Soper Creek"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Bowmanville Harbour Conservation Area", "Bowmanville/Westside Marshes", "Bowmanville Valley Conservation Area"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Clarington", "Courtice", "Newcastle"],
+    "service_notes": ""
+  },
+  "courtice": {
+    "name": "Courtice",
+    "region": "Clarington, Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Farewell Creek", "Darlington Creek", "Tooley Creek", "Westside Creek", "Lake Ontario"],
+    "mosquito_pressure_drivers": [
+      "the Tooley Creek valleylands, specifically flagged for environmental protection in Clarington's Courtice Waterfront Secondary Plan",
+      "Darlington Creek's watershed (Tooley, Farewell, and Westside Creek tributaries)",
+      "proximity to Darlington Provincial Park just south of the community"
+    ],
+    "neighborhoods": ["Prestonvale"],
+    "local_landmarks": ["Darlington Provincial Park", "Tooley Creek valleylands"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Oshawa", "Bowmanville", "Clarington"],
+    "service_notes": ""
+  },
+  "newcastle": {
+    "name": "Newcastle",
+    "region": "Clarington, Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Wilmot Creek", "Graham Creek", "Lake Ontario"],
+    "mosquito_pressure_drivers": [
+      "Samuel Wilmot Nature Area, a 77-hectare bog and nature area at the Wilmot Creek outlet",
+      "Wilmot Creek's bog headwaters, noted for unique coastal-wetland habitat",
+      "Graham Creek at Bond Head Park near the harbour"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Samuel Wilmot Nature Area", "Thurn Park Conservation Area", "Port of Newcastle"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Bowmanville", "Clarington", "Courtice"],
+    "service_notes": ""
+  },
+  "brooklin": {
+    "name": "Brooklin",
+    "region": "Whitby, Durham Region",
+    "population_note": "verify (grown from ~7,000 in 2005 to 25,000+ per recent reporting - verify current figure)",
+    "water_bodies": ["Lynde Creek"],
+    "mosquito_pressure_drivers": [
+      "Lynde Creek and its tributaries winding directly through the community",
+      "Heber Down Conservation Area bordering Brooklin to the west",
+      "agricultural land bordering the community to the north, a source of standing water after rain"
+    ],
+    "neighborhoods": ["Meadowcrest", "Downtown Brooklin (Heritage Conservation District)"],
+    "local_landmarks": ["Heber Down Conservation Area", "Downtown Brooklin Heritage Conservation District"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Whitby", "Oshawa"],
+    "service_notes": ""
+  },
+  "port-perry": {
+    "name": "Port Perry",
+    "region": "Scugog, Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Lake Scugog", "Port Perry Bay"],
+    "mosquito_pressure_drivers": [
+      "Port Perry Bay at the south end of Lake Scugog, a shallow-water wetland area with an active constructed-wetland enhancement project",
+      "Lake Scugog itself is large and shallow, which warms quickly and supports extensive shoreline wetland habitat",
+      "downtown Port Perry's direct waterfront position on the bay"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Port Perry Bay", "Lake Scugog waterfront"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Scugog", "Uxbridge"],
+    "service_notes": ""
+  },
+  "scugog": {
+    "name": "Scugog",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Lake Scugog", "Nonquon River", "Blacksock Creek", "Cawker's Creek"],
+    "mosquito_pressure_drivers": [
+      "Lake Scugog's inflows (Nonquon River, Blacksock Creek, Cawker's Creek) and the Cartwright wetlands",
+      "Beaver River Wetland Conservation Area and Nonquon Wildlife Area",
+      "a largely rural/agricultural township with extensive standing water in low-lying farmland"
+    ],
+    "neighborhoods": ["Port Perry", "Scugog Island"],
+    "local_landmarks": ["Beaver River Wetland Conservation Area", "Nonquon Wildlife Area"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Port Perry", "Uxbridge"],
+    "service_notes": "Township-wide page; Port Perry (the largest community) has its own more specific page."
+  },
+  "uxbridge": {
+    "name": "Uxbridge",
+    "region": "Durham Region",
+    "population_note": "verify",
+    "water_bodies": ["Uxbridge Brook"],
+    "mosquito_pressure_drivers": [
+      "location on the Oak Ridges Moraine, source of the headwaters of more than thirty rivers - abundant groundwater and wetlands",
+      "Uxbridge Brook running through wooded trail corridors close to the town",
+      "Crow's Pass Conservation Area and surrounding rolling meadowland/dense woodland with seasonal wetlands"
+    ],
+    "neighborhoods": ["Quaker Village"],
+    "local_landmarks": ["Oak Ridges Trail", "Crow's Pass Conservation Area", "Uxbridge Historical Centre"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Scugog", "Whitby"],
+    "service_notes": ""
+  },
+  "scarborough": {
+    "name": "Scarborough",
+    "region": "Toronto",
+    "population_note": "verify",
+    "water_bodies": ["Highland Creek", "West Highland Creek", "Rouge River", "East Don River", "Lake Ontario"],
+    "mosquito_pressure_drivers": [
+      "three major watershed systems running the length of Scarborough - Rouge River (east), Highland Creek (centre), East Don River (west)",
+      "four wetlands totaling 7.6 hectares at the mouth of Highland Creek, including Stephenson's Swamp (a Provincially Significant Wetland)",
+      "the Scarborough ravine network of forested valley corridors carrying these creeks to the lake"
+    ],
+    "neighborhoods": ["Morningside", "Milliken", "Cedarbrook", "Port Union", "West Rouge", "West Hill", "Woburn", "Birchcliffe", "Cliffside"],
+    "local_landmarks": ["Highland Creek", "Stephenson's Swamp", "Scarborough Bluffs", "Morningside Park", "Milliken Park"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Pickering", "North York"],
+    "service_notes": ""
+  },
+  "north-york": {
+    "name": "North York",
+    "region": "Toronto",
+    "population_note": "verify",
+    "water_bodies": ["West Don River", "Don River", "Black Creek", "Newtonbrook Creek", "Wilket Creek"],
+    "mosquito_pressure_drivers": [
+      "the West Don River running through Earl Bales Park (~53 hectares, includes a reservoir)",
+      "Black Creek's ravine corridor, described as feeling separated from the surrounding urban environment",
+      "an extensive shaded ravine trail network along the Don River system running through the community"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Earl Bales Park", "East Don Parkland", "Sunnybrook Park", "Toronto Botanical Garden at Edwards Gardens"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Vaughan", "Scarborough"],
+    "service_notes": ""
+  },
+  "mississauga": {
+    "name": "Mississauga",
+    "region": "Peel Region",
+    "population_note": "verify",
+    "water_bodies": ["Credit River", "Cooksville Creek", "Sheridan Creek", "Sixteen Mile Creek", "Turtle Creek"],
+    "mosquito_pressure_drivers": [
+      "the Credit River watershed, managed by Credit Valley Conservation, running through the city to Lake Ontario",
+      "Cooksville Creek, which originates in industrial land north of Highway 403 and flows through residential Mississauga",
+      "multiple smaller creeks (Sheridan, Sixteen Mile, Turtle, Birchwood, Tecumseh) draining directly to the lake"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Credit River", "Cooksville Creek corridor"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["Vaughan", "North York"],
+    "service_notes": ""
+  },
+  "vaughan": {
+    "name": "Vaughan",
+    "region": "York Region",
+    "population_note": "verify",
+    "water_bodies": ["Humber River", "Black Creek", "Cold Creek", "Harris Creek"],
+    "mosquito_pressure_drivers": [
+      "the Kortright Centre for Conservation (325 hectares), with the Humber River to its west and Cold Creek/Harris Creek to its north",
+      "Black Creek originating in Vaughan and flowing south to meet the Humber River",
+      "Boyd Conservation Area and Mackenzie Glen District Park along the Humber River corridor"
+    ],
+    "neighborhoods": ["verify"],
+    "local_landmarks": ["Kortright Centre for Conservation", "Boyd Conservation Area", "Mackenzie Glen District Park"],
+    "season_note": "verify local start/peak; roughly late May-Sept",
+    "nearest_serviced_cities": ["North York", "Mississauga"],
+    "service_notes": ""
+  }
+}

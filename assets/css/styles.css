@@ -1805,6 +1805,10 @@ h1, h2, h3, p {
 .city-intro,
 .city-problem,
 .city-how,
+.city-cost,
+.city-safety,
+.city-timing,
+.city-neighborhoods,
 .city-services,
 .city-guarantee,
 .city-faq {
@@ -1817,6 +1821,10 @@ h1, h2, h3, p {
 .city-intro h2,
 .city-problem h2,
 .city-how h2,
+.city-cost h2,
+.city-safety h2,
+.city-timing h2,
+.city-neighborhoods h2,
 .city-services h2,
 .city-guarantee h2,
 .city-faq h2 {
@@ -1830,6 +1838,10 @@ h1, h2, h3, p {
 .city-intro p,
 .city-problem p,
 .city-how p,
+.city-cost p,
+.city-safety p,
+.city-timing p,
+.city-neighborhoods p,
 .city-guarantee p {
   max-width: 720px;
   color: var(--soft);
@@ -1842,6 +1854,7 @@ h1, h2, h3, p {
 }
 
 .city-problem ul,
+.city-neighborhoods ul,
 .city-services ul,
 .city-how ol {
   display: grid;
@@ -1853,6 +1866,7 @@ h1, h2, h3, p {
 }
 
 .city-problem li,
+.city-neighborhoods li,
 .city-services li,
 .city-how li {
   padding: 18px 20px;
@@ -1865,8 +1879,21 @@ h1, h2, h3, p {
 }
 
 .city-problem strong,
+.city-neighborhoods strong,
 .city-services strong {
   color: var(--brand);
+}
+
+.city-neighborhoods ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.city-neighborhoods li {
+  display: inline-flex;
+  padding: 10px 16px;
+  font-weight: 700;
 }
 
 .city-how ol {
