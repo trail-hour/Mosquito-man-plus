@@ -1,19 +1,46 @@
 // Mosquito Man Plus — shared site behavior (no framework, no build step)
 
-// Mobile nav toggle
+// Mobile nav toggle. "is-open" mounts the panel (display: none -> grid);
+// "is-visible" (added a frame later) drives the opacity/transform
+// transition — combining both into one class would skip the animation,
+// since display can't transition and the browser would just paint the
+// end state on the same frame the panel appears.
 const menuButton = document.querySelector("[data-menu-button]");
 const primaryNav = document.querySelector("[data-primary-nav]");
 
 if (menuButton && primaryNav) {
+  const PRIMARY_NAV_TRANSITION_MS = 200;
+  let primaryNavCloseTimer = null;
+
+  const openPrimaryNav = () => {
+    window.clearTimeout(primaryNavCloseTimer);
+    primaryNav.classList.add("is-open");
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => primaryNav.classList.add("is-visible"));
+    });
+    menuButton.setAttribute("aria-expanded", "true");
+  };
+
+  const closePrimaryNav = () => {
+    window.clearTimeout(primaryNavCloseTimer);
+    primaryNav.classList.remove("is-visible");
+    primaryNavCloseTimer = window.setTimeout(() => {
+      primaryNav.classList.remove("is-open");
+    }, PRIMARY_NAV_TRANSITION_MS);
+    menuButton.setAttribute("aria-expanded", "false");
+  };
+
   menuButton.addEventListener("click", () => {
-    const isOpen = primaryNav.classList.toggle("is-open");
-    menuButton.setAttribute("aria-expanded", String(isOpen));
+    if (primaryNav.classList.contains("is-visible")) {
+      closePrimaryNav();
+    } else {
+      openPrimaryNav();
+    }
   });
 
   primaryNav.addEventListener("click", (event) => {
     if (event.target instanceof HTMLAnchorElement) {
-      primaryNav.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
+      closePrimaryNav();
     }
   });
 }
@@ -41,8 +68,17 @@ if (areaToggle && areaCollapsibles.length) {
   });
 }
 
-// FAQ accordion
+// FAQ accordion. Same max-height-from-scrollHeight technique as the areas
+// "Show All" toggle above — measured rather than a blind large constant so
+// the slide animation is proportional to the real content height.
 document.querySelectorAll("[data-accordion]").forEach((accordion) => {
+  accordion.querySelectorAll(".accordion-item").forEach((item) => {
+    const panel = item.querySelector(".accordion-panel");
+    const isExpanded = item.querySelector("button")?.getAttribute("aria-expanded") === "true";
+    panel.classList.toggle("is-expanded", isExpanded);
+    panel.style.maxHeight = isExpanded ? `${panel.scrollHeight}px` : "0px";
+  });
+
   accordion.addEventListener("click", (event) => {
     const button = event.target.closest("button");
     if (!button || !accordion.contains(button)) return;
@@ -50,11 +86,12 @@ document.querySelectorAll("[data-accordion]").forEach((accordion) => {
     const item = button.closest(".accordion-item");
     const panel = item.querySelector(".accordion-panel");
     const mark = button.querySelector(".accordion-mark");
-    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const expanding = button.getAttribute("aria-expanded") !== "true";
 
-    button.setAttribute("aria-expanded", String(!isExpanded));
-    panel.hidden = isExpanded;
-    if (mark) mark.textContent = isExpanded ? "+" : "−";
+    button.setAttribute("aria-expanded", String(expanding));
+    panel.classList.toggle("is-expanded", expanding);
+    panel.style.maxHeight = expanding ? `${panel.scrollHeight}px` : "0px";
+    if (mark) mark.textContent = expanding ? "−" : "+";
   });
 });
 
@@ -129,10 +166,16 @@ const discountStorage = {
   },
 };
 
+const DISCOUNT_MODAL_TRANSITION_MS = 250;
+const DISCOUNT_FORM_LEAVE_MS = 160;
+
 const closeDiscountModal = () => {
   if (!discountModal) return;
-  discountModal.hidden = true;
+  discountModal.classList.remove("is-open");
   document.body.classList.remove("modal-open");
+  window.setTimeout(() => {
+    discountModal.hidden = true;
+  }, DISCOUNT_MODAL_TRANSITION_MS);
   discountStorage.set();
 };
 
@@ -140,6 +183,13 @@ if (discountModal && !discountStorage.get()) {
   window.setTimeout(() => {
     discountModal.hidden = false;
     document.body.classList.add("modal-open");
+    // Two rAFs: the first lets the browser paint the just-unhidden (closed)
+    // state, the second adds the class that triggers the transition — a
+    // single rAF can land before that first paint and the transition gets
+    // skipped, jumping straight to the open state.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => discountModal.classList.add("is-open"));
+    });
   }, 8000);
 
   discountModal.addEventListener("click", (event) => {
@@ -269,14 +319,23 @@ document.querySelectorAll("[data-discount-form]").forEach((form) => {
           note.classList.remove("is-error");
         }
       } else {
+        // Crossfade rather than an instant swap: this is the one rare,
+        // high-emotion moment on the site (a visitor just won 5% off), so
+        // it earns the small entrance most other UI here skips.
         const successMessage = form.parentElement.querySelector("[data-discount-success]");
-        form.reset();
-        form.classList.remove("was-validated");
-        form.hidden = true;
-        if (successMessage) {
-          successMessage.textContent = "🎉 Your 5% discount code is PEST5! Check your inbox.";
-          successMessage.hidden = false;
-        }
+        form.classList.add("is-leaving");
+        window.setTimeout(() => {
+          form.reset();
+          form.classList.remove("was-validated", "is-leaving");
+          form.hidden = true;
+          if (successMessage) {
+            successMessage.textContent = "🎉 Your 5% discount code is PEST5! Check your inbox.";
+            successMessage.hidden = false;
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => successMessage.classList.add("is-visible"));
+            });
+          }
+        }, DISCOUNT_FORM_LEAVE_MS);
       }
       discountStorage.set();
     } catch (error) {

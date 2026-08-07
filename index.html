@@ -8,7 +8,10 @@
 <meta name="description" content="Mosquito Man Plus is a dedicated mosquito control company serving Oshawa, Durham Region, and the GTA with barrier treatments, seasonal programs, event spraying, and standing water control. A sister brand of Bugman Plus.">
 <link rel="canonical" href="https://mosquitomanplus.com">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="theme-color" content="#060907">
+<meta name="theme-color" content="#16232c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;600;650;700;800&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","PestControl"],"name":"Mosquito Man Plus","url":"https://mosquitomanplus.com","telephone":"+19059242847","email":"info@mosquitomanplus.com","address":{"@type":"PostalAddress","addressLocality":"Oshawa","addressRegion":"ON","addressCountry":"CA"},"areaServed":[{"@type":"City","name":"Oshawa, ON"},{"@type":"City","name":"Whitby, ON"},{"@type":"City","name":"Ajax, ON"},{"@type":"City","name":"Pickering, ON"},{"@type":"City","name":"Clarington, ON"},{"@type":"City","name":"Bowmanville, ON"},{"@type":"City","name":"Courtice, ON"},{"@type":"City","name":"Newcastle, ON"},{"@type":"City","name":"Brooklin, ON"},{"@type":"City","name":"Port Perry, ON"},{"@type":"City","name":"Scugog, ON"},{"@type":"City","name":"Uxbridge, ON"},{"@type":"City","name":"Brock, ON"},{"@type":"AdministrativeArea","name":"Durham Region, ON"},{"@type":"City","name":"Scarborough, ON"},{"@type":"City","name":"North York, ON"},{"@type":"City","name":"Mississauga, ON"},{"@type":"City","name":"Vaughan, ON"},{"@type":"AdministrativeArea","name":"Greater Toronto Area, ON"}],"parentOrganization":{"@type":"Organization","name":"Bugman Plus","url":"https://www.bugmanplus.com"},"slogan":"Take the season back from mosquitoes.","priceRange":"$$"}</script>
 </head>
@@ -31,7 +34,7 @@
   </nav>
   <div class="header-actions">
     <a class="call-link" href="tel:+19059242847">905-924-2847</a>
-    <a class="button button-small" href="contact.html">Get a Quote</a>
+    <a class="button button-small" href="#quote">Get a Quote</a>
     <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-button>
       <span></span><span></span>
     </button>
@@ -41,23 +44,35 @@
 <main>
 
   <!-- ============ HERO ============ -->
-  <section class="hero" style="background-image: url('https://res.cloudinary.com/tpig6erx/image/upload/f_auto,q_auto,w_1200,c_limit/v1783744732/hero_rayvma.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div>
-    <div style="position:relative;z-index:2;">
+  <section class="hero" style="background-image: url('https://res.cloudinary.com/tpig6erx/image/upload/f_auto,q_auto,w_1200,c_limit/v1783744732/hero_rayvma.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="hero-overlay"></div>
+    <div>
       <div class="hero-content reveal">
-        <p class="eyebrow">Oshawa &amp; Durham Region Mosquito Control</p>
-        <h1>Mosquito Man <em>Plus</em></h1>
-        <p class="hero-lede">Dedicated mosquito control for Durham Region and GTA backyards, patios, and events — barrier treatments, seasonal programs, and standing-water source control from the Bugman Plus family of companies.</p>
+        <p class="eyebrow">Oshawa &amp; Durham Region — Mosquito Season Is Live</p>
+        <h1>Mosquito Control in Oshawa &amp; <em>Durham Region</em></h1>
+        <p class="hero-lede">Barrier treatments, seasonal programs, and standing-water control that keep your yard usable at dusk — when mosquitoes are worst and everyone else is inside. Real local technicians, not a franchise call centre.</p>
         <div class="hero-actions">
-          <a class="button" href="tel:+19059242847">Call Now: 905-924-2847</a>
-          <a class="button button-secondary" href="contact.html">Get a Quote</a>
+          <a class="button button-ember" href="tel:+19059242847">Call Now — 905-924-2847</a>
+          <a class="button button-secondary" href="#quote">Get a Free Quote</a>
+          <span class="hero-actions-note">Backed by a 21-day re-treat guarantee.</span>
         </div>
       </div>
-      <div class="hero-metrics" aria-label="Mosquito Man Plus highlights">
-        <div><strong>Spring&ndash;Fall</strong><span>Season-long coverage</span></div>
-        <div><strong>7</strong><span>Dedicated mosquito services</span></div>
-        <div><strong>19</strong><span>Service areas covered</span></div>
+      <div class="hero-metrics" aria-label="What to know before you book">
+        <div><strong>Peak Activity</strong><span>Dusk, roughly 6&ndash;9pm</span></div>
+        <div><strong>Season</strong><span>Late May through September</span></div>
+        <div><strong>Guarantee</strong><span>Free re-treat within 21 days</span></div>
       </div>
+      <div class="perimeter-seam" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAND ============ -->
+  <section class="trust-band" aria-label="Why homeowners choose Mosquito Man Plus">
+    <div class="trust-band-row">
+      <span class="trust-item"><strong>Locally owned</strong> — Oshawa, not a franchise</span>
+      <span class="trust-item">EPA/PMRA-registered products</span>
+      <span class="trust-item"><strong>21-day</strong> re-treat guarantee</span>
+      <span class="trust-item"><strong>5.0&#9733;</strong> rated on Google</span>
     </div>
   </section>
 
@@ -183,7 +198,7 @@
       <p class="section-kicker">Our Guarantee</p>
       <h2>If mosquitoes return within 21 days, we re-treat for free. No questions asked.</h2>
       <p>Every seasonal mosquito program includes this return-visit guarantee. If activity comes back before your next scheduled treatment, call us and we'll be back out within 21 days at no charge.</p>
-      <a class="button button-secondary" href="contact.html">Get a Quote</a>
+      <a class="button button-secondary" href="#quote">Get a Quote</a>
     </div>
   </section>
 
@@ -191,13 +206,13 @@
   <section class="section about-band">
     <div class="about-band-art reveal" aria-hidden="true">
       <svg viewBox="0 0 300 200" fill="none">
-        <g stroke="#ffd500" opacity="0.45">
+        <g stroke="#e3a93c" opacity="0.45">
           <circle cx="150" cy="100" r="28" stroke-dasharray="3 6"/>
           <circle cx="150" cy="100" r="56" stroke-dasharray="3 6"/>
           <circle cx="150" cy="100" r="84" stroke-dasharray="3 6"/>
         </g>
-        <circle cx="150" cy="100" r="5" fill="#ffd500"/>
-        <text x="150" y="124" text-anchor="middle" fill="#ffd500" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">OSHAWA, ON</text>
+        <circle cx="150" cy="100" r="5" fill="#e3a93c"/>
+        <text x="150" y="124" text-anchor="middle" fill="#e3a93c" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">OSHAWA, ON</text>
       </svg>
     </div>
     <div class="about-copy reveal">
@@ -238,6 +253,70 @@
     </div>
   </section>
 
+  <!-- ============ QUOTE ============ -->
+  <section class="section contact-split" id="quote">
+    <div class="contact-copy reveal">
+      <p class="section-kicker">Get a Free Quote</p>
+      <h2>Tell us about your yard. We'll call you back.</h2>
+      <p>Most requests get a same-day callback in season. Prefer to talk it through first? Call directly — a real Oshawa-based technician answers, not a franchise dispatch line.</p>
+      <div class="contact-methods large">
+        <a href="tel:+19059242847">905-924-2847</a>
+      </div>
+    </div>
+
+    <div class="quote-stack reveal">
+      <form class="quote-form" action="https://formspree.io/f/mgojgpyq" method="POST" data-quote-form data-success-message="Thanks. Mosquito Man Plus received your request and will follow up within one business day.">
+        <input type="hidden" name="formType" value="quote">
+        <input type="hidden" name="context" value="Homepage inline quote form">
+        <label class="form-hp" aria-hidden="true">Website<input name="website" type="text" autocomplete="off" tabindex="-1"></label>
+        <div class="form-grid">
+          <label>Name<input name="name" type="text" placeholder="Your name" autocomplete="name" required></label>
+          <label>Phone<input name="phone" type="tel" placeholder="905-000-0000" autocomplete="tel" required></label>
+          <label class="form-full">Email<input name="_replyto" type="email" placeholder="you@example.com" autocomplete="email" required></label>
+          <label>Service
+            <select name="service" required>
+              <option value="">Select a service</option>
+              <option value="residential-barrier-treatment">Residential Mosquito Barrier Treatment</option>
+              <option value="seasonal-mosquito-programs">Seasonal Mosquito Programs</option>
+              <option value="one-time-event-spraying">One-Time Event Spraying</option>
+              <option value="standing-water-breeding-site-treatment">Standing Water &amp; Breeding Site Treatment</option>
+              <option value="larvicide-treatment">Larvicide Treatment</option>
+              <option value="tick-control-add-on">Tick Control Add-On</option>
+              <option value="commercial-patio-mosquito-control">Commercial &amp; Patio Mosquito Control</option>
+            </select>
+          </label>
+          <label>Location
+            <select name="location" required>
+              <option value="">Select a location</option>
+              <option value="oshawa">Oshawa, ON</option>
+              <option value="whitby">Whitby, ON</option>
+              <option value="ajax">Ajax, ON</option>
+              <option value="pickering">Pickering, ON</option>
+              <option value="clarington">Clarington, ON</option>
+              <option value="bowmanville">Bowmanville, ON</option>
+              <option value="courtice">Courtice, ON</option>
+              <option value="newcastle">Newcastle, ON</option>
+              <option value="brooklin">Brooklin, ON</option>
+              <option value="port-perry">Port Perry, ON</option>
+              <option value="scugog">Scugog, ON</option>
+              <option value="uxbridge">Uxbridge, ON</option>
+              <option value="brock">Brock, ON</option>
+              <option value="durham-region">Durham Region, ON</option>
+              <option value="scarborough">Scarborough, ON</option>
+              <option value="north-york">North York, ON</option>
+              <option value="mississauga">Mississauga, ON</option>
+              <option value="vaughan">Vaughan, ON</option>
+              <option value="gta">Greater Toronto Area, ON</option>
+            </select>
+          </label>
+          <label class="form-full">Message<textarea name="message" placeholder="Tell us about the property or event, what you're seeing, and when you need service."></textarea></label>
+        </div>
+        <button class="button button-ember button-wide" type="submit">Submit Request</button>
+        <p class="form-note" data-form-note role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
   <!-- ============ FAQ ============ -->
   <section class="section faq-section">
     <div class="section-heading reveal">
@@ -259,7 +338,7 @@
           <span>Is there a guarantee?</span>
           <span class="accordion-mark">+</span>
         </button>
-        <div class="accordion-panel" hidden>
+        <div class="accordion-panel">
           <p>Seasonal mosquito programs include a return-visit guarantee — if activity returns between scheduled treatments, we come back at no charge.</p>
         </div>
       </div>
@@ -268,7 +347,7 @@
           <span>Are treatments safe for kids, pets, and gardens?</span>
           <span class="accordion-mark">+</span>
         </button>
-        <div class="accordion-panel" hidden>
+        <div class="accordion-panel">
           <p>Yes. We use EPA/PMRA-registered products applied by trained technicians, with application timing that keeps kids, pets, and edible gardens in mind.</p>
         </div>
       </div>
@@ -277,7 +356,7 @@
           <span>How soon before an outdoor event should I book spraying?</span>
           <span class="accordion-mark">+</span>
         </button>
-        <div class="accordion-panel" hidden>
+        <div class="accordion-panel">
           <p>Book at least 3&ndash;5 days out when possible. Event spraying is timed 24&ndash;48 hours before your date for the strongest effect, and popular weekends fill up fast in peak season.</p>
         </div>
       </div>
@@ -286,7 +365,7 @@
           <span>How do I get a quote?</span>
           <span class="accordion-mark">+</span>
         </button>
-        <div class="accordion-panel" hidden>
+        <div class="accordion-panel">
           <p>Call 905-924-2847, email info@mosquitomanplus.com, or send the quote form with the service, location, and a short description of the property.</p>
         </div>
       </div>
@@ -373,36 +452,36 @@
 </section>
 
 <style>
-.reviews-section{padding:60px 20px;background:#f9f9f4;text-align:center}
+.reviews-section{padding:88px 20px;background:var(--paper);text-align:center}
 .reviews-container{max-width:680px;margin:0 auto}
-.reviews-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:6px}
-.reviews-title{font-size:28px;font-weight:600;color:#1a1a1a;margin-bottom:10px}
+.reviews-label{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-on-paper);margin-bottom:8px}
+.reviews-title{font-family:var(--font-display);font-size:34px;font-weight:500;color:var(--ink-on-paper);margin-bottom:10px}
 .reviews-overall{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:36px}
-.reviews-score{font-size:28px;font-weight:700;color:#1a1a1a}
-.reviews-stars{color:#F4B91A;font-size:22px}
-.reviews-count{font-size:14px;color:#888}
+.reviews-score{font-size:26px;font-weight:700;color:var(--ink-on-paper)}
+.reviews-stars{color:var(--brand-deep);font-size:20px}
+.reviews-count{font-size:14px;color:var(--muted-on-paper)}
 .reviews-carousel-wrap{overflow:hidden;border-radius:12px}
 .reviews-track{display:flex;transition:transform .4s ease}
 .review-slide{min-width:100%;box-sizing:border-box;padding:4px}
-.review-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:24px 28px;text-align:left}
+.review-card{background:#fff;border:1px solid rgba(36,29,20,0.1);border-radius:12px;padding:24px 28px;text-align:left}
 .review-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.review-avatar{width:42px;height:42px;border-radius:50%;background:#e8f5e9;color:#2e7d32;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.review-avatar{width:42px;height:42px;border-radius:50%;background:rgba(var(--brand-rgb),0.16);color:var(--brand-deep);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
 .review-meta{flex:1}
-.review-name{font-size:15px;font-weight:600;color:#1a1a1a;display:flex;align-items:center;gap:8px}
+.review-name{font-size:15px;font-weight:650;color:var(--ink-on-paper);display:flex;align-items:center;gap:8px}
 .review-badge{font-size:11px;font-weight:500;background:#e8f0fe;color:#1a73e8;padding:2px 8px;border-radius:20px}
-.review-date{font-size:12px;color:#aaa;margin-top:2px}
+.review-date{font-size:12px;color:var(--muted-on-paper);margin-top:2px}
 .review-google-icon{flex-shrink:0}
-.review-stars{color:#F4B91A;font-size:16px;margin-bottom:10px}
-.review-text{font-size:15px;color:#444;line-height:1.7;margin-bottom:12px}
-.review-tag{display:inline-block;font-size:12px;color:#555;background:#f5f5f0;border:1px solid #e0e0e0;border-radius:20px;padding:4px 12px}
+.review-stars{color:var(--brand-deep);font-size:16px;margin-bottom:10px}
+.review-text{font-size:15px;color:#3a332a;line-height:1.7;margin-bottom:12px}
+.review-tag{display:inline-block;font-size:12px;color:var(--muted-on-paper);background:rgba(36,29,20,0.05);border:1px solid rgba(36,29,20,0.1);border-radius:20px;padding:4px 12px}
 .reviews-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px}
-.reviews-btn{width:34px;height:34px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#555;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.reviews-btn:hover{background:#f0f0f0}
+.reviews-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(36,29,20,0.18);background:#fff;color:var(--ink-on-paper);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.reviews-btn:hover{background:rgba(36,29,20,0.06)}
 .reviews-dots{display:flex;gap:7px}
-.reviews-dot{width:7px;height:7px;border-radius:50%;background:#ddd;cursor:pointer;transition:background .2s}
-.reviews-dot.active{background:#2e7d32}
-.reviews-cta{display:inline-block;margin-top:24px;font-size:14px;color:#2e7d32;border:1px solid #2e7d32;border-radius:6px;padding:9px 20px;text-decoration:none;font-weight:500;transition:background .2s}
-.reviews-cta:hover{background:#f0f7f0}
+.reviews-dot{width:7px;height:7px;border-radius:50%;background:rgba(36,29,20,0.2);cursor:pointer;transition:background .2s}
+.reviews-dot.active{background:var(--ember)}
+.reviews-cta{display:inline-block;margin-top:24px;font-family:var(--font-mono);font-size:13.5px;color:var(--on-ember);background:var(--ember);border:1px solid var(--ember);border-radius:999px;padding:11px 24px;text-decoration:none;font-weight:700;transition:background .2s, transform .2s}
+.reviews-cta:hover{background:var(--ember-light);transform:translateY(-1px)}
 </style>
 
 <script>
@@ -482,6 +561,7 @@
       <button class="button button-wide" type="submit">Claim 5% Discount</button>
       <p class="discount-note" data-form-note role="status" aria-live="polite"></p>
     </form>
+    <p class="discount-success" data-discount-success role="status" aria-live="polite" hidden></p>
     <a class="discount-call" href="tel:+19059242847">Prefer to call? 905-924-2847</a>
   </section>
 </div>
