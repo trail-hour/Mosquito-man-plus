@@ -73,7 +73,7 @@ function buildHowSection() {
       <li><strong>Breeding Source Control:</strong> Where possible, we advise on eliminating standing water sources — bird baths, low spots, clogged gutters — to reduce future breeding.</li>
       <li><strong>Follow-Up Service:</strong> We return every 21 days throughout mosquito season to maintain your protection barrier.</li>
     </ol>
-    <p>Most treatments take 20–40 minutes. You can return to your yard once the product has dried — typically within 30 minutes.</p>`;
+    <p>Most treatments take 20–40 minutes. You can return to your yard once the product has dried — typically within 30 minutes. See our full <a href="../services/residential.html">residential mosquito control program</a> for pricing factors and FAQs.</p>`;
 }
 
 function buildCostSection(city) {
@@ -106,6 +106,23 @@ function buildNeighborhoodsSection(city) {
   return `<p>We cover all of ${escapeHtml(city.name)}, including:</p>
     <ul>
       ${items}
+    </ul>`;
+}
+
+function buildUseCasesSection(city) {
+  return `<p>Not sure which service fits? Most ${escapeHtml(
+    city.name
+  )} properties fall into one of three categories:</p>
+    <ul>
+      <li><strong><a href="../services/residential.html">Residential mosquito control in ${escapeHtml(
+        city.name
+      )}</a>:</strong> recurring seasonal barrier treatments for backyards, built around families and pets.</li>
+      <li><strong><a href="../services/events.html">Mosquito spraying for backyard events in ${escapeHtml(
+        city.name
+      )}</a>:</strong> a single treatment timed 24&ndash;48 hours before a wedding, party, or outdoor gathering.</li>
+      <li><strong><a href="../services/commercial.html">Commercial mosquito control for ${escapeHtml(
+        city.name
+      )} patios and properties</a>:</strong> scheduled service for restaurants, breweries, campgrounds, and managed properties.</li>
     </ul>`;
 }
 
@@ -299,6 +316,11 @@ function renderCityPage(slug, city, allCities) {
     ${buildNeighborhoodsSection(city)}
   </section>
 
+  <section class="city-services">
+    <h2>Which Service Fits Your ${escapeHtml(city.name)} Property?</h2>
+    ${buildUseCasesSection(city)}
+  </section>
+
   <section class="city-faq">
     <h2>Frequently Asked Questions — Mosquito Control in ${escapeHtml(city.name)}</h2>
 
@@ -339,6 +361,9 @@ ${buildFaqHtml(faqItems)}
         <li><a href="../index.html">Home</a></li>
         <li><a href="../about.html">About</a></li>
         <li><a href="../services.html">Services</a></li>
+        <li><a href="../services/residential.html">Residential</a></li>
+        <li><a href="../services/events.html">Events</a></li>
+        <li><a href="../services/commercial.html">Commercial</a></li>
         <li><a href="../areas.html">Areas</a></li>
         <li><a href="../blog/index.html">Blog</a></li>
         <li><a href="../contact.html">Contact</a></li>

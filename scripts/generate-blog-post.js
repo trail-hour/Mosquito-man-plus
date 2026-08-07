@@ -22,16 +22,19 @@ const SITE_URL = "https://mosquitomanplus.com";
 // Fixed lastmod for the pages this job never touches. Update by hand if you
 // substantially edit one of these pages.
 const STATIC_PAGE_LASTMOD = "2026-07-11";
-const AREA_PAGE_LASTMOD = "2026-07-12";
+const AREA_PAGE_LASTMOD = "2026-08-07"; // Query Fan-Out refactor (real per-city data, cities.json)
+const PILLAR_PAGE_LASTMOD = "2026-08-07";
 const AREA_SLUGS = [
   "oshawa", "whitby", "ajax", "pickering", "clarington", "bowmanville",
   "courtice", "newcastle", "brooklin", "port-perry", "scugog", "uxbridge",
   "scarborough", "north-york", "mississauga", "vaughan",
 ];
+const PILLAR_SLUGS = ["residential", "events", "commercial"];
 const STATIC_PAGES = [
   { loc: `${SITE_URL}/`, lastmod: STATIC_PAGE_LASTMOD },
   { loc: `${SITE_URL}/about.html`, lastmod: STATIC_PAGE_LASTMOD },
   { loc: `${SITE_URL}/services.html`, lastmod: STATIC_PAGE_LASTMOD },
+  ...PILLAR_SLUGS.map((slug) => ({ loc: `${SITE_URL}/services/${slug}.html`, lastmod: PILLAR_PAGE_LASTMOD })),
   { loc: `${SITE_URL}/areas.html`, lastmod: STATIC_PAGE_LASTMOD },
   ...AREA_SLUGS.map((slug) => ({ loc: `${SITE_URL}/areas/${slug}.html`, lastmod: AREA_PAGE_LASTMOD })),
   { loc: `${SITE_URL}/contact.html`, lastmod: STATIC_PAGE_LASTMOD },
@@ -79,6 +82,34 @@ const AREA_DISPLAY = {
 // The pillar/hub post every generated spoke should link back to. Same
 // directory as the generated posts, so a bare filename href is correct.
 const PILLAR_URL = "2026-07-17-mosquito-control-durham-region-complete-guide.html";
+
+// Reverse-silo link into the Tier-2 use-case pillar (services/*.html) that
+// actually matches the topic - not a random reciprocal link. Deterministic
+// on the known topic string rather than AI-generated text, so it doesn't
+// depend on model compliance. Keep in sync with
+// scripts/add-pillar-links-to-posts.js, which does the same classification
+// for posts that already existed before this was added.
+const USE_CASE_PILLARS = {
+  events: { href: "../services/events.html", text: "our event mosquito spraying service", keywords: ["event"] },
+  commercial: {
+    href: "../services/commercial.html",
+    text: "our commercial mosquito control service",
+    keywords: ["commercial"],
+  },
+  residential: { href: "../services/residential.html", text: "our residential mosquito control program", keywords: [] },
+};
+
+function pickUseCasePillar(topic) {
+  const lowerTopic = topic.toLowerCase();
+  for (const key of ["events", "commercial"]) {
+    if (USE_CASE_PILLARS[key].keywords.some((kw) => lowerTopic.includes(kw))) return USE_CASE_PILLARS[key];
+  }
+  return USE_CASE_PILLARS.residential;
+}
+
+function buildRelatedServiceHtml(pillar) {
+  return `<section class="blog-related-service"><h3>Related Service</h3><p>See <a href="${pillar.href}">${pillar.text}</a> for pricing factors, safety details, and FAQs.</p></section>`;
+}
 
 // Picks 3 area pages relevant to a topic: any city named in the topic
 // string first, then a deterministic rotation (seeded by post count) to
@@ -588,7 +619,8 @@ async function main() {
     .replaceAll("{{KEY_TAKEAWAYS_HTML}}", buildKeyTakeawaysHtml(raw.keyTakeaways))
     .replaceAll("{{TOC_HTML}}", buildTocHtml(toc))
     .replaceAll("{{BODY_HTML}}", bodyHtml)
-    .replaceAll("{{FAQ_SECTION_HTML}}", buildFaqSectionHtml(raw.faq));
+    .replaceAll("{{FAQ_SECTION_HTML}}", buildFaqSectionHtml(raw.faq))
+    .replaceAll("{{RELATED_SERVICE_HTML}}", buildRelatedServiceHtml(pickUseCasePillar(topic)));
 
   fs.writeFileSync(path.join(BLOG_DIR, filename), rendered);
   console.log(`Wrote blog/${filename}`);

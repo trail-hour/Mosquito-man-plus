@@ -1,0 +1,79 @@
+DATE,DOMAIN,TYPE,EMAIL,SUBJECT,STATUS,NOTES
+2026-07-18,bbb.org,directory,info@bbb.org,Add Mosquito Man Plus to Your Directory,DRY_RUN,
+2026-07-18,homestars.com,directory,andrew.gillespie@homestars.com,Add Mosquito Man Plus to Your Directory,DRY_RUN,
+2026-07-18,trustanalytica.org,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,profilecanada.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,downtownlondon.ca,local,barbara@downtownlondon.ca,Local Pest Control Business — Mosquito Man Plus,DRY_RUN,
+2026-07-18,canadareviewers.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,canadiannewsjournal.com,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,todayfromcanada.com,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,completepestcontrolchristchurch.co.nz,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,barriecareercentre.com,local,info@barriecareercentre.com,Local Pest Control Business — Mosquito Man Plus,DRY_RUN,
+2026-07-18,oshawachamber.com,chamber,info@oshawachamber.com,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,whitbychamber.org,chamber,info@whitbychamber.org,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,apboardoftrade.com,chamber,info@apboardoftrade.com,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,cbot.ca,chamber,info@cbot.ca,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,scugogchamber.ca,chamber,info@scugogchamber.ca,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,mbot.com,chamber,aadams@mbot.com,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,vaughanchamber.ca,chamber,info@vaughanchamber.ca,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,occ.ca,chamber,danieltisch@occ.ca,Membership inquiry – local pest control business,DRY_RUN,
+2026-07-18,oshawa.ca,municipal,smcfadyen@oshawa.ca,Adding a local business to your directory,DRY_RUN,
+2026-07-18,whitby.ca,municipal,sharkeyj@whitby.ca,Adding a local business to your directory,DRY_RUN,
+2026-07-18,ajax.ca,municipal,chris.walker@ajax.ca,Adding a local business to your directory,DRY_RUN,
+2026-07-18,pickering.ca,municipal,mguinto@pickering.ca,Adding a local business to your directory,DRY_RUN,
+2026-07-18,clarington.net,municipal,lreck@clarington.net,Adding a local business to your directory,DRY_RUN,
+2026-07-18,scugog.ca,municipal,blabelle@scugog.ca,Adding a local business to your directory,DRY_RUN,
+2026-07-18,uxbridge.ca,municipal,tlee@uxbridge.ca,Adding a local business to your directory,DRY_RUN,
+2026-07-18,spmao.ca,association,info@spmao.ca,Membership inquiry – Structural Pest Management Association of Ontario,DRY_RUN,
+2026-07-18,drhba.com,association,a.devries@drhba.com,Membership inquiry – Durham Region Home Builders Association,DRY_RUN,
+2026-07-18,landscapeontario.com,association,cmccann@landscapeontario.com,Membership inquiry – Landscape Ontario,DRY_RUN,
+2026-07-18,durhamregion.com,media,jmitchell@durhamregion.com,Local expert source – mosquito/tick season in Durham,DRY_RUN,
+2026-07-18,oshawaexpress.ca,media,newsroom@oshawaexpress.ca,Local expert source – mosquito/tick season in Durham,DRY_RUN,
+2026-07-18,insauga.com,media,nicolasbeaver@insauga.com,Local expert source – mosquito/tick season in Durham,DRY_RUN,
+2026-07-18,bbb.org,directory,info@bbb.org,Add Mosquito Man Plus to Your Directory,FAILED,Key not found
+2026-07-18,homestars.com,directory,andrew.gillespie@homestars.com,Add Mosquito Man Plus to Your Directory,FAILED,Key not found
+2026-07-18,trustanalytica.org,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,profilecanada.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,downtownlondon.ca,local,barbara@downtownlondon.ca,Local Pest Control Business — Mosquito Man Plus,FAILED,Key not found
+2026-07-18,canadareviewers.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,canadiannewsjournal.com,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,todayfromcanada.com,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,completepestcontrolchristchurch.co.nz,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,barriecareercentre.com,local,info@barriecareercentre.com,Local Pest Control Business — Mosquito Man Plus,FAILED,Key not found
+2026-07-18,oshawachamber.com,chamber,info@oshawachamber.com,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,whitbychamber.org,chamber,info@whitbychamber.org,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,apboardoftrade.com,chamber,info@apboardoftrade.com,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,cbot.ca,chamber,info@cbot.ca,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,scugogchamber.ca,chamber,info@scugogchamber.ca,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,mbot.com,chamber,aadams@mbot.com,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,vaughanchamber.ca,chamber,info@vaughanchamber.ca,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,occ.ca,chamber,danieltisch@occ.ca,Membership inquiry – local pest control business,FAILED,Key not found
+2026-07-18,oshawa.ca,municipal,smcfadyen@oshawa.ca,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,whitby.ca,municipal,sharkeyj@whitby.ca,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,ajax.ca,municipal,chris.walker@ajax.ca,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,pickering.ca,municipal,mguinto@pickering.ca,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,clarington.net,municipal,lreck@clarington.net,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,scugog.ca,municipal,blabelle@scugog.ca,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,uxbridge.ca,municipal,tlee@uxbridge.ca,Adding a local business to your directory,FAILED,Key not found
+2026-07-18,spmao.ca,association,info@spmao.ca,Membership inquiry – Structural Pest Management Association of Ontario,FAILED,Key not found
+2026-07-18,drhba.com,association,a.devries@drhba.com,Membership inquiry – Durham Region Home Builders Association,FAILED,Key not found
+2026-07-18,landscapeontario.com,association,cmccann@landscapeontario.com,Membership inquiry – Landscape Ontario,FAILED,Key not found
+2026-07-18,durhamregion.com,media,jmitchell@durhamregion.com,Local expert source – mosquito/tick season in Durham,FAILED,Key not found
+2026-07-18,oshawaexpress.ca,media,newsroom@oshawaexpress.ca,Local expert source – mosquito/tick season in Durham,FAILED,Key not found
+2026-07-18,insauga.com,media,nicolasbeaver@insauga.com,Local expert source – mosquito/tick season in Durham,FAILED,Key not found
+2026-07-18,bbb.org,directory,info@bbb.org,Add Mosquito Man Plus to Your Directory,FAILED,name is missing in to
+2026-07-18,homestars.com,directory,andrew.gillespie@homestars.com,Add Mosquito Man Plus to Your Directory,FAILED,name is missing in to
+2026-07-18,trustanalytica.org,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,profilecanada.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,downtownlondon.ca,local,barbara@downtownlondon.ca,Local Pest Control Business — Mosquito Man Plus,FAILED,name is missing in to
+2026-07-18,bbb.org,directory,info@bbb.org,Add Mosquito Man Plus to Your Directory,SENT,<202607180434.92546579809@smtp-relay.mailin.fr>
+2026-07-18,homestars.com,directory,andrew.gillespie@homestars.com,Add Mosquito Man Plus to Your Directory,SENT,<202607180434.45307508212@smtp-relay.mailin.fr>
+2026-07-18,trustanalytica.org,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,profilecanada.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,downtownlondon.ca,local,barbara@downtownlondon.ca,Local Pest Control Business — Mosquito Man Plus,SENT,<202607180434.83501967355@smtp-relay.mailin.fr>
+2026-07-18,canadareviewers.com,directory,NOT FOUND,,SKIPPED,No email found
+2026-07-18,canadiannewsjournal.com,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,todayfromcanada.com,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,completepestcontrolchristchurch.co.nz,resource,NOT FOUND,,SKIPPED,No email found
+2026-07-18,barriecareercentre.com,local,info@barriecareercentre.com,Local Pest Control Business — Mosquito Man Plus,SENT,<202607180434.55404328492@smtp-relay.mailin.fr>
+2026-07-18,oshawachamber.com,chamber,info@oshawachamber.com,Membership inquiry – local pest control business,SENT,<202607180435.21867235445@smtp-relay.mailin.fr>

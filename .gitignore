@@ -1,2 +1,6 @@
 .vercel
 .env
+node_modules/
+package-lock.json
+claude-blog/
+claude-seo/
