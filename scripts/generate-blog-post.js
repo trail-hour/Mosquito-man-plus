@@ -232,7 +232,15 @@ Respond with ONLY a single JSON object (no markdown code fences, no commentary) 
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 5000,
+      max_tokens: 6000,
+      // Extended thinking was defaulting on and, on roughly half of runs,
+      // consuming the entire max_tokens budget on reasoning before the model
+      // ever wrote the answer — leaving no text block for the JSON parse
+      // below (see MMP 09 in the Obsidian vault for the failure-rate
+      // writeup). This is a formulaic post following a fixed JSON schema;
+      // it doesn't need step-by-step reasoning, so turn thinking off rather
+      // than just raising the ceiling and hoping.
+      thinking: { type: "disabled" },
       messages: [{ role: "user", content: prompt }],
     }),
   });
