@@ -469,6 +469,26 @@ h1, h2, h3, p {
   margin-top: 30px;
 }
 
+.hero-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--soft);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.hero-rating-stars {
+  color: var(--brand-light);
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.hero-rating strong {
+  color: var(--brand-light);
+  font-weight: 800;
+}
+
 .hero-actions-note {
   flex-basis: 100%;
   margin-top: 2px;
@@ -588,6 +608,34 @@ h1, h2, h3, p {
 .trust-item strong {
   color: var(--brand-light);
   font-weight: 700;
+}
+
+/* ============ trust badges (guarantee section) ============ */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 26px;
+}
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(var(--brand-rgb), 0.4);
+  border-radius: 999px;
+  background: rgba(var(--brand-rgb), 0.07);
+  color: var(--soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.trust-badge svg {
+  width: 18px;
+  height: 18px;
+  color: var(--brand);
+  flex-shrink: 0;
 }
 
 /* ============ sections ============ */
