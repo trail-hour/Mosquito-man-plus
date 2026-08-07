@@ -100,6 +100,17 @@ button {
   cursor: pointer;
 }
 
+/* Keyboard-only focus ring, site-wide. :focus-visible (not :focus) so it
+   shows for Tab navigation but not mouse clicks — matches the two form-input
+   groups below, which use :focus since a visible ring on click is normal
+   there. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1411,6 +1422,7 @@ h1, h2, h3, p {
 .quote-form select:focus,
 .quote-form textarea:focus {
   border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.3);
 }
 
 .quote-form input:invalid:not(:placeholder-shown),
@@ -1711,6 +1723,7 @@ h1, h2, h3, p {
 
 .discount-form input:focus {
   border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.3);
 }
 
 .discount-note {
