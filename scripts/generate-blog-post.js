@@ -184,6 +184,51 @@ function getTorontoDateParts(date = new Date()) {
   return { iso, display };
 }
 
+// Forces the response through tool-use instead of asking the model to
+// hand-type an escaped JSON string containing HTML-with-quoted-attributes as
+// prose. That approach was fragile: any time the model forgot to escape an
+// internal quote (e.g. inside an href="...") the whole response failed to
+// parse. tool_choice guarantees a structured, correctly-encoded object back
+// — this failure class is now structurally impossible, not just less likely.
+const BLOG_POST_TOOL = {
+  name: "publish_blog_post",
+  description: "Submit the completed blog post content.",
+  input_schema: {
+    type: "object",
+    properties: {
+      title: {
+        type: "string",
+        description: "SEO title, <=60 characters, includes keyword + location, no quotation marks",
+      },
+      metaDescription: { type: "string", description: "<=155 characters" },
+      excerpt: { type: "string", description: "One-sentence teaser for a blog listing card, under 160 characters" },
+      tldr: { type: "string", description: "2-3 plain-text sentences summarizing the whole article" },
+      keyTakeaways: {
+        type: "array",
+        items: { type: "string" },
+        description: "3-5 short plain-text bullet points summarizing the article's most useful points",
+      },
+      bodyHtml: {
+        type: "string",
+        description: "The article body as a single HTML string using only the tags described in the prompt",
+      },
+      faq: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            question: { type: "string" },
+            answer: { type: "string", description: "Plain-text answer, 1-3 sentences" },
+          },
+          required: ["question", "answer"],
+        },
+        description: "4-5 realistic homeowner questions related to the topic",
+      },
+    },
+    required: ["title", "metaDescription", "excerpt", "tldr", "keyTakeaways", "bodyHtml", "faq"],
+  },
+};
+
 async function callClaude(topic, angle, areaSlugs) {
   const areaLinksList = areaSlugs
     .map((slug) => `href="../areas/${slug}.html" (anchor text naming ${AREA_DISPLAY[slug]})`)
@@ -212,16 +257,7 @@ Requirements:
 - keyTakeaways must contain 3-5 short plain-text bullet points summarizing the article's most useful points.
 - tldr must be 2-3 plain-text sentences summarizing the whole article.
 
-Respond with ONLY a single JSON object (no markdown code fences, no commentary) with exactly these keys:
-{
-  "title": "SEO title, <=60 characters, includes keyword + location, no quotation marks",
-  "metaDescription": "<=155 characters",
-  "excerpt": "one sentence teaser for a blog listing card, under 160 characters",
-  "tldr": "2-3 plain-text sentences",
-  "keyTakeaways": ["plain-text bullet", "plain-text bullet", "plain-text bullet"],
-  "bodyHtml": "the article body as a single HTML string using only the tags listed above",
-  "faq": [{"question": "...", "answer": "plain-text answer"}]
-}`;
+Submit the finished post via the publish_blog_post tool.`;
 
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -235,12 +271,13 @@ Respond with ONLY a single JSON object (no markdown code fences, no commentary) 
       max_tokens: 6000,
       // Extended thinking was defaulting on and, on roughly half of runs,
       // consuming the entire max_tokens budget on reasoning before the model
-      // ever wrote the answer — leaving no text block for the JSON parse
-      // below (see MMP 09 in the Obsidian vault for the failure-rate
-      // writeup). This is a formulaic post following a fixed JSON schema;
-      // it doesn't need step-by-step reasoning, so turn thinking off rather
-      // than just raising the ceiling and hoping.
+      // ever produced output — see MMP 09 in the Obsidian vault for the
+      // failure-rate writeup. This is a formulaic post following a fixed
+      // schema; it doesn't need step-by-step reasoning, so turn thinking off
+      // rather than just raising the ceiling and hoping.
       thinking: { type: "disabled" },
+      tools: [BLOG_POST_TOOL],
+      tool_choice: { type: "tool", name: BLOG_POST_TOOL.name },
       messages: [{ role: "user", content: prompt }],
     }),
   });
@@ -259,17 +296,12 @@ Respond with ONLY a single JSON object (no markdown code fences, no commentary) 
     throw new Error(`Anthropic API returned non-JSON response:\n${rawBody}`);
   }
 
-  // Normally the text is the first content block, but fall back to scanning
-  // for a "text" block in case Claude ever returns other block types first.
-  const textBlock =
-    (Array.isArray(data.content) && data.content.find((block) => block?.type === "text")) || data.content?.[0];
-  const text = textBlock?.text;
-  if (!text) throw new Error(`Anthropic API response had no text content:\n${JSON.stringify(data, null, 2)}`);
+  const toolUseBlock = Array.isArray(data.content) && data.content.find((block) => block?.type === "tool_use");
+  if (!toolUseBlock) {
+    throw new Error(`Anthropic API response had no tool_use content:\n${JSON.stringify(data, null, 2)}`);
+  }
 
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error(`Could not find JSON in Claude response:\n${text}`);
-
-  const parsed = JSON.parse(jsonMatch[0]);
+  const parsed = toolUseBlock.input;
   for (const key of ["title", "metaDescription", "excerpt", "tldr", "keyTakeaways", "bodyHtml", "faq"]) {
     if (!parsed[key]) throw new Error(`Claude response missing "${key}"`);
   }
